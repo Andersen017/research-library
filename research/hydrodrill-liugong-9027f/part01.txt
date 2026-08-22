@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="ru" data-theme="paper">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Исследование и подбор гидробурового комплекта для мини-экскаватора LiuGong 9027F ZTS. Визуальный прототип HTML-стандарта исследований.">
+  <title>Гидробур для LiuGong 9027F ZTS — исследование и закупочное решение</title>
+  <style>
+    :root {
+      --canvas: #e7eadf;
+      --canvas-2: #dce2d2;
+      --paper: #f8f7ef;
+      --paper-2: #eef1e6;
+      --ink: #2b312b;
+      --ink-strong: #1d241e;
+      --muted: #687168;
+      --line: #d0d6c8;
+      --line-strong: #a6b09d;
+      --accent: #6d7857;
+      --accent-deep: #46513b;
+      --accent-soft: #e4e9dc;
+      --ochre: #8d8950;
+      --ochre-soft: #efeedc;
+      --sage: #728167;
+      --sage-deep: #4a5a43;
+      --sage-soft: #e5ebdf;
+      --info: #506c65;
+      --info-soft: #e2ece7;
+      --danger: #955246;
+      --danger-soft: #f2e3df;
+      --shadow: 0 18px 50px rgba(43, 58, 40, .14);
+      --shadow-soft: 0 6px 20px rgba(43, 58, 40, .09);
+      --radius-xl: 24px;
+      --radius-lg: 17px;
+      --radius-md: 12px;
+      --font-size: 17px;
+      --content-width: 1040px;
+      --sidebar-width: 286px;
+    }
+
+    html[data-theme="night"] {
+      --canvas: #111611;
+      --canvas-2: #182019;
+      --paper: #1c241d;
+      --paper-2: #222c23;
+      --ink: #e6e8df;
+      --ink-strong: #f6f7ef;
+      --muted: #aab4a7;
+      --line: #3b483a;
+      --line-strong: #586956;
+      --accent: #a9b68d;
+      --accent-deep: #c8d2b5;
+      --accent-soft: #2b3528;
+      --ochre: #c0ba77;
+      --ochre-soft: #343323;
+      --sage: #9dad91;
+      --sage-deep: #c0ccb5;
+      --sage-soft: #263227;
+      --info: #8fada5;
+      --info-soft: #22312d;
+      --danger: #d18a79;
+      --danger-soft: #382725;
+      --shadow: 0 18px 50px rgba(0, 0, 0, .28);
+      --shadow-soft: 0 6px 20px rgba(0, 0, 0, .18);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255,255,255,.30), transparent 28%),
+        radial-gradient(circle at 88% 17%, rgba(109,120,87,.09), transparent 24%),
+        linear-gradient(145deg, var(--canvas), var(--canvas-2));
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: var(--font-size);
+      line-height: 1.68;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .25;
+      background-image:
+        repeating-linear-gradient(0deg, transparent 0 3px, rgba(45,60,40,.018) 3px 4px),
+        repeating-linear-gradient(90deg, transparent 0 5px, rgba(45,60,40,.012) 5px 6px);
+      z-index: -1;
+    }
+
+    a { color: var(--accent); text-underline-offset: 3px; }
+    a:hover { color: var(--accent-deep); }
+    button, input { font: inherit; }
+    button { color: inherit; }
+
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0;
+      background: linear-gradient(90deg, var(--ochre), var(--accent));
+      z-index: 1000;
+      box-shadow: 0 0 10px rgba(141,137,80,.35);
+    }
+
+    .shell {
+      width: min(1500px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 22px 0 116px;
+      display: grid;
+      grid-template-columns: var(--sidebar-width) minmax(0, var(--content-width));
+      justify-content: center;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 20px;
+      max-height: calc(100vh - 40px);
+      overflow: auto;
+      background: color-mix(in srgb, var(--paper) 96%, transparent);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      padding: 20px;
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(12px);
+    }
+
+    .brandline {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brandmark {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--accent-deep);
+      color: #f5f4e8;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .06em;
+    }
+
+    .brandline b {
+      display: block;
+      color: var(--ink-strong);
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      line-height: 1.25;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .brandline small {
+      display: block;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      margin-top: 2px;
+    }
+
+    .toc-title,
+    .controls-title {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font: 700 11px/1.3 Arial, sans-serif;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .toc { display: grid; gap: 3px; }
+    .toc a {
+      display: block;
+      padding: 7px 9px;
+      border-radius: 9px;
+      color: var(--muted);
+      text-decoration: none;
+      font: 600 12px/1.35 Arial, sans-serif;
+      transition: .18s ease;
+    }
+    .toc a:hover,
+    .toc a.active {
+      color: var(--accent-deep);
+      background: var(--accent-soft);
+      transform: translateX(2px);
+    }
+
+    .controls {
+      display: grid;
+      gap: 9px;
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+
+    .control-row { display: flex; gap: 7px; flex-wrap: wrap; }
+    .control-btn {
+      border: 1px solid var(--line);
+      background: var(--paper-2);
+      border-radius: 9px;
+      padding: 7px 9px;
+      cursor: pointer;
+      font: 700 12px/1 Arial, sans-serif;
+      transition: .16s ease;
+    }
+    .control-btn:hover { border-color: var(--accent); color: var(--accent-deep); }
+
+    .sidebar-note {
+      margin-top: 15px;
+      color: var(--muted);
+      font: 12px/1.45 Arial, sans-serif;
+    }
+
+    main { min-width: 0; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      color: #f7f7ed;
+      background:
+        radial-gradient(circle at 82% 20%, rgba(211,218,177,.20), transparent 25%),
+        linear-gradient(135deg, #263326 0%, #42513b 54%, #657259 100%);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 30px;
+      padding: clamp(28px, 5vw, 54px);
+      box-shadow: var(--shadow);
+      margin-bottom: 22px;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 50%;
+      right: -110px;
+      bottom: -210px;
+      box-shadow: 0 0 0 34px rgba(255,255,255,.025), 0 0 0 78px rgba(255,255,255,.018);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      font: 800 12px/1.3 Arial, sans-serif;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #d9deb9;
+    }
+
+    .hero h1 {
+      max-width: 900px;
+      margin: 0;
+      font-size: clamp(34px, 5.7vw, 64px);
+      line-height: 1.02;
+      font-weight: 700;
+      letter-spacing: -.035em;
+    }
+
+    .hero-subtitle {
+      max-width: 780px;
+      margin: 20px 0 0;
+      color: #e6eadc;
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.52;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 25px;
+      position: relative;
