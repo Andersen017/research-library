@@ -1,0 +1,128 @@
+span></div>
+              </div>
+              <div class="flow-node">
+                <span class="flow-no">04</span>
+                <div><b>2-пальцевый подвес</b><span>индивидуально под рукоять / БСМ</span></div>
+              </div>
+              <div class="flow-node focus">
+                <span class="flow-no">05</span>
+                <div><b>MTA-4000</b><span>4 200 Н·м · 40–80 л/мин</span></div>
+              </div>
+              <div class="flow-node">
+                <span class="flow-no">06</span>
+                <div><b>Удлинитель D65</b><span>500 мм · не менее 5 кН·м</span></div>
+              </div>
+              <div class="flow-node">
+                <span class="flow-no">07</span>
+                <div><b>Шнек Ø500</b><span>MSR4-1500-D65-500 / аналог</span></div>
+              </div>
+            </div>
+            <p class="diagram-caption">Внешний клапан реверса обычно не требуется: LiuGong штатно предусматривает двустороннюю линию навесного оборудования.<sup><a href="#src-1">1</a></sup></p>
+          </div>
+        </section>
+
+        <section class="section" id="algorithm">
+          <div class="section-kicker" data-step="03">Алгоритм выбора</div>
+          <h2>Фактический AUX определяет окончательную модель</h2>
+          <p class="intro">Каталожные 86 л/мин относятся к гидросистеме машины в целом, а не к гарантированному потоку навесной линии. Поэтому выбор делается после flow-test.</p>
+
+          <div class="conclusion">
+            <div class="conclusion-body">
+              <p class="conclusion-label">Ключевой вывод</p>
+              <strong>Порог решения — не название экскаватора, а устойчивый поток под рабочим давлением.</strong>
+              <p>Измерение AUX устраняет главный риск ошибочной покупки и занимает существенно меньше времени, чем последующая переделка гидроразводки.</p>
+            </div>
+          </div>
+
+          <div class="decision-map">
+            <div class="decision-root">Результат AUX flow-test на прогретом LiuGong</div>
+            <div class="decision-branches">
+              <div class="branch stop">
+                <span class="range">&lt; 38 л/мин</span>
+                <b>Стоп закупке Ø500</b>
+                <p>Пересчитать класс привода; рассмотреть 2,8–3,0 кН·м и лидер Ø250–300.</p>
+              </div>
+              <div class="branch primary">
+                <span class="range">40–45 л/мин</span>
+                <b>MTA-4000</b>
+                <p>Основная рабочая зона: достаточный момент при умеренном требовании к потоку.</p>
+              </div>
+              <div class="branch">
+                <span class="range">45–55 л/мин</span>
+                <b>MTA-4000 / Digga PD3</b>
+                <p>Сравнить сервис, гарантию, цену комплекта и подтверждение по грунтам.</p>
+              </div>
+              <div class="branch">
+                <span class="range">≥ 55 л/мин</span>
+                <b>PD4 / MTA-5000</b>
+                <p>Усиленный вариант возможен только после проверки массы, вылета и удлинителя.</p>
+              </div>
+            </div>
+          </div>
+
+          <h3>Шесть обязательных закупочных ворот</h3>
+          <div class="gate-grid">
+            <div class="gate"><span class="gate-no">1</span><div><b>Замер Q/P AUX</b><span>Поток при 160, 180 и 200 бар, relief и обратное давление.</span></div></div>
+            <div class="gate"><span class="gate-no">2</span><div><b>Письменный допуск</b><span>LiuGong 9027F ZTS + Ø500 + плотная глина / техногенный грунт.</span></div></div>
+            <div class="gate"><span class="gate-no">3</span><div><b>Чертёж адаптера</b><span>Диаметры пальцев, межосевое расстояние, ширина проушин.</span></div></div>
+            <div class="gate"><span class="gate-no">4</span><div><b>Дренаж и back pressure</b><span>Письменно получить допустимые значения производителя.</span></div></div>
+            <div class="gate"><span class="gate-no">5</span><div><b>Момент удлинителя</b><span>Документированно не ниже момента гидровращателя.</span></div></div>
+            <div class="gate"><span class="gate-no">6</span><div><b>Полезная глубина</b><span>Подтвердить ≥2 000 мм, а не только сумму номинальных длин.</span></div></div>
+          </div>
+        </section>
+
+        <section class="section" id="specification">
+          <div class="section-kicker" data-step="04">Закупочная спецификация</div>
+          <h2>Заказывать комплектом, а не одной «головой»</h2>
+          <p class="intro">В коммерческом предложении должна быть замкнута вся цепочка от БРС LiuGong до режущих элементов и документации.</p>
+
+          <div class="conclusion">
+            <div class="conclusion-body">
+              <p class="conclusion-label">Ключевой вывод</p>
+              <strong>Основная спецификация — MTA-4000, D65, Ø500 × 1500, удлинитель 500 мм и полный ЗИП.</strong>
+              <p>Пилотный Ø250–300 следует добавлять после опытной серии, если более 10–20% точек требуют длительного реверса или останавливают основной шнек.</p>
+            </div>
+          </div>
+
+          <div class="spec-grid">
+            <div class="spec-card">
+              <h3>Ядро комплекта</h3>
+              <ul class="spec-list">
+                <li><span>Гидровращатель</span><b>«Метатэкс» MTA-4000</b></li>
+                <li><span>Крутящий момент</span><b>4 200 Н·м</b></li>
+                <li><span>Рабочий поток</span><b>40–80 л/мин</b></li>
+                <li><span>Рабочее давление</span><b>60–200 бар</b></li>
+                <li><span>Выходной вал</span><b>круг D65</b></li>
+                <li><span>Основной шнек</span><b>MSR4-1500-D65-500 / согласованный усиленный аналог</b></li>
+                <li><span>Удлинитель</span><b>D65 · 500 мм · ≥5 000 Н·м</b></li>
+                <li><span>Подвес</span><b>двухпальцевый, свободное выставление в двух плоскостях</b></li>
+                <li><span>Гидравлика</span><b>2 полнорасходных РВД, БРС по фактической машине</b></li>
+              </ul>
+            </div>
+
+            <div class="spec-card">
+              <h3>Что включить в КП</h3>
+              <ul class="checklist">
+                <li>Паспорт, руководство, схема подключения и гарантийный срок.</li>
+                <li>Чертёж D65 и размеры стопорного пальца.</li>
+                <li>Чертёж адаптера именно под фактический LiuGong / квик-каплер.</li>
+                <li>Письменное указание по дренажу и допустимому back pressure.</li>
+                <li>Сменный забурник и полный запасной комплект зубьев.</li>
+                <li>Защитная спираль РВД, крепления, заглушки и маркировка A/B.</li>
+                <li>Масса шнека, удлинителя и собранного комплекта.</li>
+                <li>Цена с НДС, доставка в Краснодарский край и срок изготовления.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="comparison">
+          <div class="section-kicker" data-step="05">Сравнение вариантов</div>
+          <h2>MTA-4000 лидирует не по максимуму, а по балансу</h2>
+          <p class="intro">Предварительный рейтинг учитывает совместимость с носителем, гидравлику, момент, массу, доступность D65-инструмента и риск закупки.</p>
+
+          <div class="conclusion">
+            <div class="conclusion-body">
+              <p class="conclusion-label">Ключевой вывод</p>
+              <strong>Переход вниз к MTA-3000 экономит лишь около 13 тыс. ₽, но заметно снижает запас момента; переход вверх к MTA-5000 добавляет около 32 кг на конце стрелы.</strong>
+              <p>Для регулярной работы Ø500 на смешанных грунтах MTA-4000 остаётся наиболее устойчивой средней точк
