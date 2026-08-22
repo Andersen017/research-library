@@ -1,0 +1,93 @@
+p>
+            </div>
+          </details>
+
+          <details>
+            <summary>Шнек, пилотный проход и техногенные включения</summary>
+            <div class="details-body">
+              <p>Для парковой почвы, суглинка, плотной глины, щебёночных оснований и локальных фрагментов песчаника нужен усиленный инструмент для смешанного / галечно-щебенистого грунта. Метатэкс включает MSR4-1500-D65-500 в D65-линейку для машин 2–4 т.<sup><a href="#src-2">2</a></sup></p>
+              <p>Шнек Ø250–300 полезен как следующий инструмент, но не должен компенсировать заведомо слабый вращатель. Технология Ø300 → Ø500 применяется на отдельных тяжёлых точках, а не как обязательный цикл каждой опоры.</p>
+              <p>Сплошную плиту или бетон шнеком проходить не следует: слой предварительно вскрывается гидромолотом.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>Гидравлическое подключение и требования к РВД</summary>
+            <div class="details-body">
+              <p>Базовая схема:</p>
+              <p><b>AUX A → РВД → БРС → порт A гидровращателя</b><br><b>AUX B → РВД → БРС → порт B гидровращателя</b></p>
+              <p>Оба рукава должны быть полнорасходными и рассчитаны на давление с запасом относительно 216 бар. БРС, резьбы и длины РВД определяются по фактической машине. Требование по дренажу MTA-4000 и допустимое обратное давление следует получить письменно.</p>
+              <p>Для сравнения, Impulse M5 публично указывает D65, 50–95 л/мин, отсутствие дренажной линии и возвратное давление 28 бар, но формально ориентирован на носители 3–4,5 т.<sup><a href="#src-5">5</a></sup></p>
+            </div>
+          </details>
+
+          <details>
+            <summary>Рынок и логика резервных поставщиков</summary>
+            <div class="details-body">
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th>Бренд / поставщик</th><th>Роль</th><th>Вывод</th></tr></thead>
+                  <tbody>
+                    <tr class="recommended"><td><strong>Метатэкс</strong></td><td>Российская навеска, MTA-3000/4000/5000, D65, Ø500, адаптеры</td><td><strong>Первый приоритет</strong></td></tr>
+                    <tr><td>Digga</td><td>Международный benchmark, подробные диапазоны PD3/PD4</td><td>Резерв и независимая инженерная проверка</td></tr>
+                    <tr><td>Impulse</td><td>Российское производство, M5, удлинители, адаптеры</td><td>Сильный резерв после письменного допуска по массе</td></tr>
+                    <tr><td>Delta / «Традиция»</td><td>RD3/RD5, D65, сервис и поставка</td><td>Локальный резерв; RD3 при меньшем AUX</td></tr>
+                    <tr><td>Прочие участники</td><td>Auger Torque, RAY, TITAN, Professional, Pilemaster и др.</td><td>RFQ при неудовлетворительном КП лидеров</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </details>
+        </section>
+
+        <section class="section" id="sources">
+          <div class="section-kicker" data-step="10">Источники</div>
+          <h2>Первичные материалы и публичные карточки</h2>
+          <p class="intro">Приоритет отдавался официальным страницам производителей. Цены и характеристики зафиксированы как публичные данные на дату исследования.</p>
+
+          <ol class="source-list">
+            <li id="src-1"><div><b>LiuGong — 9027F ZTS</b><br><span>Масса, двигатель, системный поток и давление; двусторонняя high-flow AUX-линия.</span><br><a href="https://osproduct.liugong.com/product/9027f-zts/" target="_blank" rel="noopener">Открыть источник</a></div></li>
+            <li id="src-2"><div><b>Метатэкс — гидробур для мини-экскаваторов 2–4 т</b><br><span>MTA-3000/4000/5000, моменты, потоки, давления, массы, цены, D65 и шнеки MSR4.</span><br><a href="https://metateks-market.ru/production/mini-excavators-production/dlya-mini-ekskavatorov-ot-2-do-4-tonn/gidravlicheskij-bur/" target="_blank" rel="noopener">Открыть источник</a></div></li>
+            <li id="src-3"><div><b>Метатэкс — буровые шнеки</b><br><span>Линейки для смешанных и галечно-щебенистых грунтов, диаметры и публичные цены.</span><br><a href="https://metateks-market.ru/production/hydraulic-equipment/burovyie-shneki/" target="_blank" rel="noopener">Открыть источник</a></div></li>
+            <li id="src-4"><div><b>Digga — PD3 / PD4 specifications</b><br><span>Рекомендуемые потоки 45–75 и 55–85 л/мин, моменты 3 577 и 4 454 Н·м.</span><br><a href="https://digga.com/tractor-post-hole-digger" target="_blank" rel="noopener">Открыть источник</a></div></li>
+            <li id="src-5"><div><b>Impulse — гидробур M5</b><br><span>D65, 50–95 л/мин, до 5 000 Н·м, масса 66 кг, носитель 3–4,5 т, возвратное давление.</span><br><a href="https://www.impulse.su/product/gidrobur-impulse-m-5-s-rvd-1-2/" target="_blank" rel="noopener">Открыть источник</a></div></li>
+            <li id="src-6"><div><b>Impulse — двухпальцевый адаптер M3/M5</b><br><span>Назначение подвески и необходимость расчёта по массе машины и гидровращателя.</span><br><a href="https://www.impulse.su/product/adapter-2p-impulse-2-5/" target="_blank" rel="noopener">Открыть источник</a></div></li>
+            <li id="src-7"><div><b>Delta / ГК «Традиция» — гидровращатели на мини-экскаватор</b><br><span>RD3 и RD5: диапазоны базовой машины, моменты, D65 и публичные цены.</span><br><a href="https://www.mirdelta.ru/catalog/gidrovraschateli-na-mini-ekskavator/" target="_blank" rel="noopener">Открыть источник</a></div></li>
+          </ol>
+
+          <div class="note"><b>Ограничение доказательности:</b> индивидуальные коммерческие предложения, паспорт MTA-4000, чертёж адаптера под серийный экземпляр LiuGong, параметры обратного давления и результаты натурного AUX-теста в исследовании отсутствуют. Поэтому статус решения — <b>«рекомендовано к закупочной проработке», а не «разрешено к оплате»</b>.</div>
+        </section>
+
+        <footer class="footer">
+          <span>Визуальный прототип стандарта Research Paper · версия 1.1 · Moss Paper</span>
+          <span>Принцип: решение → схема → ключевые данные → подробное обоснование</span>
+        </footer>
+      </article>
+    </main>
+  </div>
+
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const progress = document.getElementById('progress');
+      const themeButtons = [document.getElementById('themeToggle'), ...document.querySelectorAll('.theme-mobile')].filter(Boolean);
+      const printButtons = [document.getElementById('printBtn'), ...document.querySelectorAll('.print-mobile')].filter(Boolean);
+      const fontButtons = document.querySelectorAll('[data-font]');
+      const tocLinks = document.querySelectorAll('.toc a[href^="#"]');
+      const sections = [...document.querySelectorAll('section[id]')];
+      const floatingToc = document.getElementById('floatingToc');
+      const floatingTocToggle = document.getElementById('floatingTocToggle');
+      const floatingTocClose = document.getElementById('floatingTocClose');
+      const floatingTocPanel = document.getElementById('floatingTocPanel');
+      const floatingTocCurrent = document.getElementById('floatingTocCurrent');
+      const floatingTocStep = document.getElementById('floatingTocStep');
+      const fontSizes = [15, 17, 19];
+
+      const applyThemeLabel = () => {
+        const isNight = root.dataset.theme === 'night';
+        themeButtons.forEach(btn => btn.textContent = isNight ? 'Бумажный режим' : 'Ночной режим');
+      };
+
+      const storage = {
+        get(key) { try { return localStorage.getItem(key); } catch (_) { return null; } },
+        s
