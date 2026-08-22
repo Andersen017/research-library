@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Библиотека аналитических и технических исследований Andersen.">
+  <title>Research Library — библиотека исследований</title>
+  <style>
+    :root{--canvas:#e8e8df;--paper:#f7f5ec;--ink:#292d26;--muted:#6d7268;--line:#d2d4c8;--olive:#667257;--olive-deep:#3f4a36;--olive-soft:#e4e9dc;--moss:#84906f;--ochre:#a88950;--danger:#8a5b52;--shadow:0 18px 55px rgba(43,49,38,.11)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 15% 10%,#f4f2e8 0,transparent 34%),var(--canvas);color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.55}
+    a{color:inherit}.wrap{width:min(1120px,calc(100% - 28px));margin:0 auto;padding:28px 0 72px}.hero{background:linear-gradient(135deg,var(--olive-deep),#59644d);color:#fbfaf4;border-radius:24px;padding:38px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:340px;height:340px;border-radius:50%;right:-130px;top:-160px;background:rgba(255,255,255,.07)}
+    .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;opacity:.78;font-weight:700}.hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,6vw,62px);line-height:1.02;margin:14px 0 14px;max-width:760px}.hero p{margin:0;max-width:760px;color:#e6eadf;font-size:17px}.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.stat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:8px 12px;font-size:13px}
+    .section{margin-top:26px;background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:0 10px 34px rgba(43,49,38,.05)}.section-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:18px}.section h2{font-family:Georgia,"Times New Roman",serif;font-size:30px;line-height:1.1;margin:0}.section .sub{color:var(--muted);font-size:14px}
+    .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.chip{border:1px solid var(--line);background:#f2f1e8;border-radius:999px;padding:8px 12px;font-size:13px;color:var(--muted)}.chip.active{background:var(--olive-soft);border-color:#c7cfbd;color:var(--olive-deep);font-weight:700}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}.card{grid-column:span 12;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(250px,.45fr);gap:18px;padding:24px;border:1px solid var(--line);border-radius:18px;background:#fbfaf5;text-decoration:none;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}.card:hover{transform:translateY(-2px);border-color:#b9c2ae;box-shadow:0 10px 30px rgba(43,49,38,.08)}
+    .kicker{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:800;padding:6px 8px;border-radius:8px;background:var(--olive-soft);color:var(--olive-deep)}.tag.gold{background:#eee6d6;color:#775f33}.card h3{font-family:Georgia,"Times New Roman",serif;font-size:27px;line-height:1.12;margin:0 0 10px}.card p{margin:0;color:#5f655b}.meta{border-left:1px solid var(--line);padding-left:18px;display:flex;flex-direction:column;justify-content:space-between;gap:18px}.meta dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:13px}.meta dt{color:var(--muted)}.meta dd{margin:0;font-weight:700}.open{align-self:flex-start;color:var(--olive-deep);font-weight:800;font-size:14px}
+    .principle{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}.step{padding:15px;border-radius:14px;background:var(--olive-soft);border:1px solid #ccd3c3}.step strong{display:block;color:var(--olive-deep);margin-bottom:3px}.step span{font-size:13px;color:#61675c}
+    footer{padding:20px 4px 0;color:var(--muted);font-size:13px;text-align:center}
+    @media(max-width:760px){.wrap{width:min(100% - 18px,1120px);padding-top:9px}.hero{border-radius:18px;padding:26px 22px}.section{border-radius:17px;padding:20px 16px}.section-head{display:block}.section .sub{margin-top:6px}.card{grid-template-columns:1fr;padding:18px}.meta{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:14px}.principle{grid-template-columns:1fr 1fr}}
+    @media(max-width:460px){.principle{grid-template-columns:1fr}.hero h1{font-size:38px}.card h3{font-size:23px}}
+    @media(prefers-color-scheme:dark){:root{--canvas:#22251f;--paper:#2b2f28;--ink:#ecece4;--muted:#b4b9ad;--line:#41483b;--olive-soft:#343c30}.hero{background:linear-gradient(135deg,#31392d,#46503f)}.section,.card{background:#2b2f28}.chip{background:#30342e}.tag.gold{background:#4a4131;color:#e7d4ad}.card p{color:#c5c9c0}.step span{color:#c1c7bc}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <div class="eyebrow">Research Library · Andersen</div>
+      <h1>Библиотека исследований</h1>
+      <p>Единый портал технических, рыночных, правовых и стратегических исследований. Материал построен по принципу: сначала решение и визуальная модель, затем данные, и только после — подробное обоснование.</p>
+      <div class="stats"><span class="stat">1 опубликованное исследование</span><span class="stat">Стандарт HTML v1.1</span><span class="stat">Актуализация: август 2026</span></div>
+    </header>
+
+    <section class="section" aria-labelledby="catalog-title">
+      <div class="section-head"><div><h2 id="catalog-title">Каталог</h2><div class="sub">Публичные версии исследований для быстрого чтения и передачи ссылкой.</div></div><div class="sub">Последнее обновление: 22 августа 2026</div></div>
+      <div class="filters"><span class="chip active">Все · 1</span><span class="chip">Техника · 1</span></div>
+      <div class="grid">
+        <a class="card" href="research/hydrodrill-liugong-9027f/">
+          <div>
+            <div class="kicker"><span class="tag">Техника</span><span class="tag gold">Закупочное решение</span></div>
+            <h3>Гидробуровой комплект для LiuGong 9027F ZTS</h3>
+            <p>Подбор гидровращателя, шнека и присоединительного оборудования для устройства скважин под закладные опор освещения. Ключевое решение, схема комплекта, закупочные ворота, альтернативы, риски и техническое обоснование.</p>
+          </div>
+          <aside class="meta">
+            <dl><dt>Регион</dt><dd>Краснодарский край</dd><dt>Актуальность</dt><dd>август 2026</dd><dt>Статус</dt><dd>итоговое исследование</dd><dt>Версия</dt><dd>1.1</dd></dl>
+            <span class="open">Открыть исследование →</span>
+          </aside>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="standard-title">
+      <div class="section-head"><div><h2 id="standard-title">Стандарт восприятия</h2><div class="sub">Каждый материал строится от быстрого понимания к глубокой проверке.</div></div></div>
+      <div class="principle"><div class="step"><strong>1. Ключевой вывод</strong><span>Что делать и какое решение принято.</span></div><div class="step"><strong>2. Схема</strong><span>Как устроена система или взаимосвязь.</span></div><div class="step"><strong>3. Ключевые данные</strong><span>Сравнения, параметры, риски и условия.</span></div><div class="step"><strong>4. Обоснование</strong><span>Детали, доказательства и источники для углубления.</span></div></div>
+    </section>
+
+    <footer>Research Library · GitHub Pages · публичная библиотека исследований</footer>
+  </main>
+</body>
+</html>
