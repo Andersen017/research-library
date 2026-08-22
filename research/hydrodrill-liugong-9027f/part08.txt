@@ -1,0 +1,103 @@
+ой.</p>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Вариант</th><th>Момент</th><th>Поток</th><th>Оценка</th><th>Статус</th><th>Комментарий</th></tr>
+              </thead>
+              <tbody>
+                <tr class="recommended">
+                  <td><strong>Метатэкс MTA-4000</strong></td><td>4 200 Н·м</td><td>40–80</td>
+                  <td class="score-cell"><div class="score-head"><b>8,6</b><span>/10</span></div><div class="scorebar"><span style="width:86%"></span></div></td>
+                  <td><span class="status ok">Основной</span></td><td>Лучший баланс для 2,75-тонной машины и неизвестного AUX.</td>
+                </tr>
+                <tr>
+                  <td><strong>Digga PD3-2</strong></td><td>3 577 Н·м</td><td>45–75</td>
+                  <td class="score-cell"><div class="score-head"><b>8,5</b><span>/10</span></div><div class="scorebar"><span style="width:85%"></span></div></td>
+                  <td><span class="status cond">Резерв</span></td><td>Хорошая документация и гарантия; меньший запас момента.</td>
+                </tr>
+                <tr>
+                  <td><strong>Digga PD4-2</strong></td><td>4 454 Н·м</td><td>55–85</td>
+                  <td class="score-cell"><div class="score-head"><b>8,2</b><span>/10</span></div><div class="scorebar"><span style="width:82%"></span></div></td>
+                  <td><span class="status cond">После flow-test</span></td><td>Сильный вариант при устойчивых ≥55 л/мин; проверить удлинитель.</td>
+                </tr>
+                <tr>
+                  <td><strong>Метатэкс MTA-3000</strong></td><td>3 250 Н·м</td><td>40–80</td>
+                  <td class="score-cell"><div class="score-head"><b>8,1</b><span>/10</span></div><div class="scorebar"><span style="width:81%"></span></div></td>
+                  <td><span class="status cond">Бюджетный</span></td><td>Экономия мала относительно потери запаса на техногенных включениях.</td>
+                </tr>
+                <tr>
+                  <td><strong>Impulse M5</strong></td><td>до 5 000 Н·м</td><td>50–95</td>
+                  <td class="score-cell"><div class="score-head"><b>8,1</b><span>/10</span></div><div class="scorebar"><span style="width:81%"></span></div></td>
+                  <td><span class="status cond">Условно</span></td><td>Нужен письменный допуск для носителя 2,68–2,75 т.</td>
+                </tr>
+                <tr>
+                  <td><strong>Метатэкс MTA-5000</strong></td><td>4 890 Н·м</td><td>40–95</td>
+                  <td class="score-cell"><div class="score-head"><b>7,9</b><span>/10</span></div><div class="scorebar"><span style="width:79%"></span></div></td>
+                  <td><span class="status cond">Усиленный</span></td><td>Момент выше, но привод тяжелее на 32 кг.</td>
+                </tr>
+                <tr>
+                  <td><strong>Delta RD3</strong></td><td>до 2 877 Н·м</td><td>27–75</td>
+                  <td class="score-cell"><div class="score-head"><b>7,7</b><span>/10</span></div><div class="scorebar"><span style="width:77%"></span></div></td>
+                  <td><span class="status cond">Low-flow резерв</span></td><td>Совместим по массе носителя, но запас момента ниже.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="diagram-caption">Оценка — инженерная матрица по открытым данным, а не заводское испытание на конкретном LiuGong.</p>
+        </section>
+
+        <section class="section" id="risks">
+          <div class="section-kicker" data-step="06">Критические риски</div>
+          <h2>Главный риск находится на интерфейсах</h2>
+          <p class="intro">Сама модель вращателя выбрана достаточно уверенно. Наибольшая неопределённость остаётся в фактической гидравлике, креплении и нагрузке на большом вылете.</p>
+
+          <div class="conclusion">
+            <div class="conclusion-body">
+              <p class="conclusion-label">Ключевой вывод</p>
+              <strong>Покупка становится безопасной только после замыкания трёх интерфейсов: гидравлика, механическое крепление и грузовая устойчивость.</strong>
+            </div>
+          </div>
+
+          <div class="risk-grid">
+            <div class="risk-card critical"><b>Неизвестный AUX</b><p>Риск потери оборотов, перегрева или полной несовместимости. Мера: flow-test до заказа.</p></div>
+            <div class="risk-card critical"><b>Неверный адаптер</b><p>Название модели не заменяет обмер. Мера: чертёж или 3D-обмер конкретной машины.</p></div>
+            <div class="risk-card warning"><b>Полный вылет</b><p>111 кг известной массы до шнека и грунта. Мера: load chart и натурная проверка.</p></div>
+            <div class="risk-card warning"><b>Раскачивание колонны</b><p>Длинная свободная колонна создаёт боковые нагрузки. Мера: 2-плоскостной подвес и плавная работа.</p></div>
+            <div class="risk-card warning"><b>Плитка и сплошной бетон</b><p>Риск заклинивания или разрушения зубьев. Мера: вскрытие гидромолотом, не бурить плиту как грунт.</p></div>
+            <div class="risk-card controlled"><b>Липкая глина</b><p>Управляемый эксплуатационный риск. Мера: проходки 0,3–0,4 м и частая очистка.</p></div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Риск</th><th>Вероятность</th><th>Последствие</th><th>Контроль</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Зауженные БРС</strong></td><td>Средняя</td><td>Потери давления и нагрев</td><td>Полнорасходные БРС по фактической линии</td></tr>
+                <tr><td><strong>Неучтённый case drain</strong></td><td>Неизвестно для MTA</td><td>Повреждение гидромотора</td><td>Письменный ответ производителя</td></tr>
+                <tr><td><strong>D65 разных брендов</strong></td><td>Средняя</td><td>Несовпадение штифта / посадки</td><td>Сверка чертежей и допусков</td></tr>
+                <tr><td><strong>Подземные сети</strong></td><td>По объекту</td><td>Критическое повреждение</td><td>Трассировка и допуск точки до бурения</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="section" id="acceptance">
+          <div class="section-kicker" data-step="07">Приёмка и испытание</div>
+          <h2>Комплект принимается скважинами, а не стендом</h2>
+          <p class="intro">Финальный допуск должен подтверждать работу всей системы: экскаватор, AUX, подвес, РВД, вращатель, колонна и конкретный грунт.</p>
+
+          <div class="conclusion">
+            <div class="conclusion-body">
+              <p class="conclusion-label">Ключевой вывод</p>
+              <strong>Выполнить минимум 10 контрольных скважин на трёх типах грунта и заменить предположения собственной статистикой.</strong>
+            </div>
+          </div>
+
+          <div class="timeline" aria-label="Алгоритм приёмки гидробурового комплекта">
+            <div class="time-step"><div class="time-dot">01</div><b>Flow-test</b><p>Q/P, relief, back pressure, нагрев.</p></div>
+            <div class="time-step"><div class="time-dot">02</div><b>Сухая сборка</b><p>Кинематика, РВД, вертикальность, контакты.</p></div>
+            <div class="time-step"><div class="time-dot">03</div><b>10 скважин</b><p>Лёгкий, средний и тяжёлый участок.</p></div>
+            <div class="time-step"><div class="time-dot">04</div><b>Журнал</b><p>Время, подъёмы, реверсы, температура, зубья.</p></div>
+            <div class="time-step"><div class="time-dot">05</div><b>Допуск</b><p>Оставить MTA-
