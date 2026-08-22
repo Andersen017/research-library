@@ -4,57 +4,447 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <meta name="description" content="Библиотека аналитических и технических исследований Andersen.">
+  <meta name="description" content="Research Library — публичная библиотека технических, рыночных, правовых и стратегических исследований.">
   <title>Research Library — библиотека исследований</title>
   <style>
-    :root{--canvas:#e8e8df;--paper:#f7f5ec;--ink:#292d26;--muted:#6d7268;--line:#d2d4c8;--olive:#667257;--olive-deep:#3f4a36;--olive-soft:#e4e9dc;--moss:#84906f;--ochre:#a88950;--danger:#8a5b52;--shadow:0 18px 55px rgba(43,49,38,.11)}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 15% 10%,#f4f2e8 0,transparent 34%),var(--canvas);color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.55}
-    a{color:inherit}.wrap{width:min(1120px,calc(100% - 28px));margin:0 auto;padding:28px 0 72px}.hero{background:linear-gradient(135deg,var(--olive-deep),#59644d);color:#fbfaf4;border-radius:24px;padding:38px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:340px;height:340px;border-radius:50%;right:-130px;top:-160px;background:rgba(255,255,255,.07)}
-    .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;opacity:.78;font-weight:700}.hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,6vw,62px);line-height:1.02;margin:14px 0 14px;max-width:760px}.hero p{margin:0;max-width:760px;color:#e6eadf;font-size:17px}.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.stat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:8px 12px;font-size:13px}
-    .section{margin-top:26px;background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:0 10px 34px rgba(43,49,38,.05)}.section-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:18px}.section h2{font-family:Georgia,"Times New Roman",serif;font-size:30px;line-height:1.1;margin:0}.section .sub{color:var(--muted);font-size:14px}
-    .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.chip{border:1px solid var(--line);background:#f2f1e8;border-radius:999px;padding:8px 12px;font-size:13px;color:var(--muted)}.chip.active{background:var(--olive-soft);border-color:#c7cfbd;color:var(--olive-deep);font-weight:700}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}.card{grid-column:span 12;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(250px,.45fr);gap:18px;padding:24px;border:1px solid var(--line);border-radius:18px;background:#fbfaf5;text-decoration:none;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}.card:hover{transform:translateY(-2px);border-color:#b9c2ae;box-shadow:0 10px 30px rgba(43,49,38,.08)}
-    .kicker{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:800;padding:6px 8px;border-radius:8px;background:var(--olive-soft);color:var(--olive-deep)}.tag.gold{background:#eee6d6;color:#775f33}.card h3{font-family:Georgia,"Times New Roman",serif;font-size:27px;line-height:1.12;margin:0 0 10px}.card p{margin:0;color:#5f655b}.meta{border-left:1px solid var(--line);padding-left:18px;display:flex;flex-direction:column;justify-content:space-between;gap:18px}.meta dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:13px}.meta dt{color:var(--muted)}.meta dd{margin:0;font-weight:700}.open{align-self:flex-start;color:var(--olive-deep);font-weight:800;font-size:14px}
-    .principle{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}.step{padding:15px;border-radius:14px;background:var(--olive-soft);border:1px solid #ccd3c3}.step strong{display:block;color:var(--olive-deep);margin-bottom:3px}.step span{font-size:13px;color:#61675c}
-    footer{padding:20px 4px 0;color:var(--muted);font-size:13px;text-align:center}
-    @media(max-width:760px){.wrap{width:min(100% - 18px,1120px);padding-top:9px}.hero{border-radius:18px;padding:26px 22px}.section{border-radius:17px;padding:20px 16px}.section-head{display:block}.section .sub{margin-top:6px}.card{grid-template-columns:1fr;padding:18px}.meta{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:14px}.principle{grid-template-columns:1fr 1fr}}
-    @media(max-width:460px){.principle{grid-template-columns:1fr}.hero h1{font-size:38px}.card h3{font-size:23px}}
-    @media(prefers-color-scheme:dark){:root{--canvas:#22251f;--paper:#2b2f28;--ink:#ecece4;--muted:#b4b9ad;--line:#41483b;--olive-soft:#343c30}.hero{background:linear-gradient(135deg,#31392d,#46503f)}.section,.card{background:#2b2f28}.chip{background:#30342e}.tag.gold{background:#4a4131;color:#e7d4ad}.card p{color:#c5c9c0}.step span{color:#c1c7bc}}
+    :root{
+      --canvas:#e9eadf;
+      --canvas-2:#dfe3d6;
+      --paper:#f8f7ef;
+      --paper-2:#f2f2e8;
+      --ink:#272d25;
+      --muted:#687064;
+      --line:#d0d5c9;
+      --olive:#667456;
+      --olive-deep:#3f4d37;
+      --moss:#859274;
+      --moss-soft:#e4e9dd;
+      --moss-pale:#edf0e8;
+      --ochre:#a4874d;
+      --ochre-soft:#eee7d7;
+      --danger:#8a5d54;
+      --danger-soft:#efe1dd;
+      --archive:#7a7d75;
+      --archive-soft:#e8e8e3;
+      --shadow:0 18px 55px rgba(45,55,39,.10);
+      --shadow-soft:0 8px 28px rgba(45,55,39,.06);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      line-height:1.55;
+      background:
+        radial-gradient(circle at 12% 8%,rgba(255,255,255,.72) 0,transparent 27%),
+        linear-gradient(135deg,var(--canvas),var(--canvas-2));
+      min-height:100vh;
+    }
+    button,input,select{font:inherit}
+    button{color:inherit}
+    a{color:inherit}
+    .wrap{width:min(1160px,calc(100% - 28px));margin:0 auto;padding:24px 0 76px}
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      border-radius:26px;
+      padding:40px;
+      color:#fbfaf4;
+      background:
+        radial-gradient(circle at 88% 18%,rgba(255,255,255,.10) 0 2px,transparent 3px),
+        linear-gradient(135deg,#3b4934 0%,#55634a 52%,#68765b 100%);
+      box-shadow:var(--shadow);
+    }
+    .hero:before{
+      content:"";
+      position:absolute;
+      right:-120px;
+      top:-180px;
+      width:360px;
+      height:360px;
+      border-radius:50%;
+      background:rgba(255,255,255,.07);
+    }
+    .hero:after{
+      content:"";
+      position:absolute;
+      left:-80px;
+      bottom:-110px;
+      width:260px;
+      height:260px;
+      border-radius:50%;
+      background:rgba(202,215,187,.08);
+    }
+    .hero-top{position:relative;z-index:1;display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
+    .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;opacity:.78;font-weight:800}
+    .hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(36px,6vw,64px);line-height:1.02;margin:14px 0 14px;max-width:800px;font-weight:700}
+    .hero p{margin:0;max-width:820px;color:#e8ece3;font-size:17px}
+    .theme-button{
+      position:relative;z-index:2;flex:0 0 auto;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.20);background:rgba(255,255,255,.10);color:#fff;cursor:pointer;font-size:18px
+    }
+    .theme-button:focus-visible,.chip:focus-visible,.clear-btn:focus-visible,.card:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid rgba(164,135,77,.45);outline-offset:2px}
+    .stats{position:relative;z-index:1;display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
+    .stat{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:8px 12px;font-size:13px;backdrop-filter:blur(5px)}
+
+    .section{margin-top:24px;background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:var(--shadow-soft)}
+    .section-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:20px}
+    .section h2{font-family:Georgia,"Times New Roman",serif;font-size:31px;line-height:1.1;margin:0}
+    .sub{color:var(--muted);font-size:14px}
+
+    .control-panel{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;margin-bottom:16px}
+    .search-wrap{position:relative;min-width:0}
+    .search-wrap svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);width:19px;height:19px;fill:none;stroke:var(--muted);stroke-width:2}
+    .search-wrap input{
+      width:100%;min-height:50px;border-radius:15px;border:1px solid var(--line);background:var(--paper-2);color:var(--ink);padding:12px 48px 12px 44px;font-size:16px
+    }
+    .search-wrap input::placeholder{color:#8b9187}
+    .clear-btn{position:absolute;right:7px;top:7px;width:36px;height:36px;border:0;border-radius:10px;background:transparent;color:var(--muted);cursor:pointer;font-size:20px;display:none}
+    .clear-btn.visible{display:block}
+    .sort-wrap{display:flex;gap:9px;align-items:center}
+    .sort-wrap label{color:var(--muted);font-size:13px;white-space:nowrap}
+    select{min-height:50px;border-radius:14px;border:1px solid var(--line);background:var(--paper-2);color:var(--ink);padding:0 38px 0 13px;cursor:pointer}
+
+    .filters-row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-bottom:13px}
+    .filters-label{font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:800;margin-right:2px}
+    .chip{min-height:40px;border:1px solid var(--line);background:var(--paper-2);border-radius:999px;padding:8px 13px;font-size:13px;color:var(--muted);cursor:pointer;transition:background .15s ease,border-color .15s ease,color .15s ease}
+    .chip:hover{border-color:#b8c1af}
+    .chip.active{background:var(--moss-soft);border-color:#c0cab6;color:var(--olive-deep);font-weight:800}
+    .status-tools{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 18px}
+    .status-chip{display:inline-flex;align-items:center;gap:7px}
+    .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+    .status-current{color:#556947}.status-review{color:#927540}.status-archive{color:#777b73}
+
+    .catalog-summary{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:4px 0 14px;color:var(--muted);font-size:13px}
+    .catalog-summary strong{color:var(--ink)}
+
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+    .card{
+      grid-column:span 12;
+      display:grid;
+      grid-template-columns:minmax(0,1.6fr) minmax(250px,.4fr);
+      gap:22px;
+      padding:24px;
+      border:1px solid var(--line);
+      border-radius:19px;
+      background:#fbfaf5;
+      text-decoration:none;
+      box-shadow:0 4px 18px rgba(45,55,39,.025);
+      transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease;
+    }
+    .card:hover{transform:translateY(-2px);border-color:#b7c1ad;box-shadow:0 12px 32px rgba(45,55,39,.08)}
+    .card-main{min-width:0}
+    .card-topline{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:12px}
+    .kicker{display:flex;gap:7px;flex-wrap:wrap}
+    .tag{font-size:11px;text-transform:uppercase;letter-spacing:.075em;font-weight:800;padding:6px 8px;border-radius:8px;background:var(--moss-soft);color:var(--olive-deep)}
+    .tag.secondary{background:var(--ochre-soft);color:#735e35}
+    .status-badge{white-space:nowrap;display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:800;background:var(--moss-pale);color:#536446}
+    .status-badge.review{background:var(--ochre-soft);color:#80683c}
+    .status-badge.archive{background:var(--archive-soft);color:#686b65}
+    .card h3{font-family:Georgia,"Times New Roman",serif;font-size:28px;line-height:1.12;margin:0 0 7px}
+    .subtitle{margin:0;color:#626a5e;font-size:14px}
+    .key-result{margin-top:17px;padding:14px 15px;border-left:4px solid var(--moss);border-radius:0 12px 12px 0;background:var(--moss-pale)}
+    .key-result small{display:block;color:var(--olive-deep);font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:10px;margin-bottom:4px}
+    .key-result p{margin:0;color:#465040;font-weight:650}
+    .topics{display:flex;gap:7px;flex-wrap:wrap;margin-top:16px}
+    .topic{font-size:12px;color:var(--muted);padding:5px 8px;border:1px solid var(--line);border-radius:8px;background:var(--paper-2)}
+    .meta{border-left:1px solid var(--line);padding-left:20px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+    .meta dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 12px;font-size:13px}
+    .meta dt{color:var(--muted)}
+    .meta dd{margin:0;font-weight:750;text-align:right}
+    .open{align-self:flex-start;color:var(--olive-deep);font-weight:850;font-size:14px}
+
+    .empty{display:none;text-align:center;padding:42px 16px;border:1px dashed var(--line);border-radius:17px;background:var(--paper-2);color:var(--muted)}
+    .empty.visible{display:block}
+
+    .principle{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+    .step{padding:15px;border-radius:14px;background:var(--moss-soft);border:1px solid #cbd3c3}
+    .step strong{display:block;color:var(--olive-deep);margin-bottom:3px}
+    .step span{font-size:13px;color:#60685b}
+
+    footer{padding:22px 4px 0;color:var(--muted);font-size:13px;text-align:center}
+    .loading{padding:26px;color:var(--muted);text-align:center}
+
+    body.dark{
+      --canvas:#20251f;--canvas-2:#272d25;--paper:#2b3129;--paper-2:#30362e;--ink:#eceee7;--muted:#b7beb2;--line:#414b3d;--moss-soft:#374132;--moss-pale:#323a2f;--ochre-soft:#4a4130;--archive-soft:#3a3c38
+    }
+    body.dark .card{background:#2c322a}
+    body.dark .subtitle{color:#c2c8bd}
+    body.dark .key-result p{color:#d4dacf}
+    body.dark .tag.secondary{color:#e6d5ad}
+    body.dark .status-badge{color:#cbdabf}
+    body.dark .status-badge.review{color:#ead7ac}
+    body.dark .status-badge.archive{color:#d0d1cc}
+    body.dark .step span{color:#c5cbc0}
+
+    @media(max-width:800px){
+      .wrap{width:min(100% - 18px,1160px);padding-top:9px}
+      .hero{border-radius:18px;padding:27px 22px}
+      .hero-top{gap:10px}
+      .section{border-radius:18px;padding:21px 16px}
+      .section-head{display:block}.section-head .sub{margin-top:6px}
+      .control-panel{grid-template-columns:1fr}.sort-wrap{justify-content:space-between}.sort-wrap select{flex:1;min-width:0}
+      .card{grid-template-columns:1fr;padding:18px;gap:16px}
+      .meta{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:15px}
+      .meta dl{grid-template-columns:auto 1fr}.meta dd{text-align:right}
+      .principle{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:500px){
+      .hero h1{font-size:40px}.hero p{font-size:15px}.theme-button{width:42px;height:42px}
+      .section h2{font-size:28px}.principle{grid-template-columns:1fr}
+      .card-topline{display:block}.status-badge{margin-top:9px}.card h3{font-size:24px}
+      .catalog-summary{display:block}.catalog-summary span{display:block;margin-top:4px}
+    }
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
   </style>
 </head>
 <body>
   <main class="wrap">
     <header class="hero">
-      <div class="eyebrow">Research Library · Andersen</div>
-      <h1>Библиотека исследований</h1>
-      <p>Единый портал технических, рыночных, правовых и стратегических исследований. Материал построен по принципу: сначала решение и визуальная модель, затем данные, и только после — подробное обоснование.</p>
-      <div class="stats"><span class="stat">1 опубликованное исследование</span><span class="stat">Стандарт HTML v1.1</span><span class="stat">Актуализация: август 2026</span></div>
+      <div class="hero-top">
+        <div>
+          <div class="eyebrow">Research Library · Andersen</div>
+          <h1>Библиотека исследований</h1>
+          <p>Единый портал технических, рыночных, правовых и стратегических исследований. Сначала — решение и визуальная модель, затем ключевые данные и только после — подробное обоснование.</p>
+        </div>
+        <button class="theme-button" id="themeToggle" type="button" aria-label="Переключить режим отображения" title="День / ночь">☾</button>
+      </div>
+      <div class="stats" aria-label="Статистика библиотеки">
+        <span class="stat" id="countStat">Загрузка каталога…</span>
+        <span class="stat" id="currentStat">Актуальные материалы: —</span>
+        <span class="stat" id="updatedStat">Последнее обновление: —</span>
+      </div>
     </header>
 
     <section class="section" aria-labelledby="catalog-title">
-      <div class="section-head"><div><h2 id="catalog-title">Каталог</h2><div class="sub">Публичные версии исследований для быстрого чтения и передачи ссылкой.</div></div><div class="sub">Последнее обновление: 22 августа 2026</div></div>
-      <div class="filters"><span class="chip active">Все · 1</span><span class="chip">Техника · 1</span></div>
-      <div class="grid">
-        <a class="card" href="research/hydrodrill-liugong-9027f/">
-          <div>
-            <div class="kicker"><span class="tag">Техника</span><span class="tag gold">Закупочное решение</span></div>
-            <h3>Гидробуровой комплект для LiuGong 9027F ZTS</h3>
-            <p>Подбор гидровращателя, шнека и присоединительного оборудования для устройства скважин под закладные опор освещения. Ключевое решение, схема комплекта, закупочные ворота, альтернативы, риски и техническое обоснование.</p>
-          </div>
-          <aside class="meta">
-            <dl><dt>Регион</dt><dd>Краснодарский край</dd><dt>Актуальность</dt><dd>август 2026</dd><dt>Статус</dt><dd>итоговое исследование</dd><dt>Версия</dt><dd>1.1</dd></dl>
-            <span class="open">Открыть исследование →</span>
-          </aside>
-        </a>
+      <div class="section-head">
+        <div>
+          <h2 id="catalog-title">Каталог исследований</h2>
+          <div class="sub">Найдите материал по теме, статусу, региону или ключевому слову.</div>
+        </div>
+        <div class="sub">Portal v1 · HTML Standard v1.1</div>
       </div>
+
+      <div class="control-panel">
+        <div class="search-wrap">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.8-3.8"></path></svg>
+          <input id="searchInput" type="search" autocomplete="off" placeholder="Найти исследование, оборудование, регион…" aria-label="Поиск по исследованиям">
+          <button id="clearSearch" class="clear-btn" type="button" aria-label="Очистить поиск">×</button>
+        </div>
+        <div class="sort-wrap">
+          <label for="sortSelect">Сортировка</label>
+          <select id="sortSelect" aria-label="Сортировка исследований">
+            <option value="latest">Последние</option>
+            <option value="topic">По теме</option>
+            <option value="status">По статусу</option>
+            <option value="asof">По дате актуальности</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="filters-row" id="categoryFilters" aria-label="Фильтр по тематике">
+        <span class="filters-label">Темы</span>
+      </div>
+      <div class="status-tools" id="statusFilters" aria-label="Фильтр по статусу">
+        <button class="chip active" type="button" data-status="all">Все статусы</button>
+        <button class="chip status-chip status-current" type="button" data-status="current"><span class="dot"></span>Актуально</button>
+        <button class="chip status-chip status-review" type="button" data-status="review"><span class="dot"></span>Требует актуализации</button>
+        <button class="chip status-chip status-archive" type="button" data-status="archive"><span class="dot"></span>Архив</button>
+      </div>
+
+      <div class="catalog-summary" aria-live="polite">
+        <div id="resultCount"><strong>—</strong> материалов</div>
+        <span id="activeFilterText">Показаны все исследования</span>
+      </div>
+
+      <div class="grid" id="catalogGrid"><div class="loading">Загружаю библиотеку…</div></div>
+      <div class="empty" id="emptyState">По заданным условиям ничего не найдено. Измените запрос или сбросьте фильтр.</div>
     </section>
 
     <section class="section" aria-labelledby="standard-title">
-      <div class="section-head"><div><h2 id="standard-title">Стандарт восприятия</h2><div class="sub">Каждый материал строится от быстрого понимания к глубокой проверке.</div></div></div>
-      <div class="principle"><div class="step"><strong>1. Ключевой вывод</strong><span>Что делать и какое решение принято.</span></div><div class="step"><strong>2. Схема</strong><span>Как устроена система или взаимосвязь.</span></div><div class="step"><strong>3. Ключевые данные</strong><span>Сравнения, параметры, риски и условия.</span></div><div class="step"><strong>4. Обоснование</strong><span>Детали, доказательства и источники для углубления.</span></div></div>
+      <div class="section-head">
+        <div>
+          <h2 id="standard-title">Стандарт восприятия</h2>
+          <div class="sub">Каждый материал строится от быстрого понимания к глубокой проверке.</div>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="step"><strong>1. Ключевой вывод</strong><span>Что делать и какое решение принято.</span></div>
+        <div class="step"><strong>2. Схема</strong><span>Как устроена система, алгоритм или взаимосвязь.</span></div>
+        <div class="step"><strong>3. Ключевые данные</strong><span>Сравнения, параметры, риски и условия.</span></div>
+        <div class="step"><strong>4. Обоснование</strong><span>Детали, доказательства и источники для углубления.</span></div>
+      </div>
     </section>
 
     <footer>Research Library · GitHub Pages · публичная библиотека исследований</footer>
   </main>
+
+  <script>
+    (() => {
+      const fallbackData = [{
+        id:"hydrodrill-liugong-9027f",
+        title:"Гидробуровой комплект для LiuGong 9027F ZTS",
+        subtitle:"Подбор гидровращателя, шнека и присоединительного оборудования для устройства скважин под закладные опор освещения",
+        summary:"Базовый кандидат — MTA-4000. Окончательное закупочное решение принимается только после инструментального замера фактических параметров AUX на машине.",
+        category:"Оборудование",
+        topics:["Инженерия","Закупки","Мини-экскаватор","Гидробур"],
+        region:"Краснодарский край",
+        asOf:"2026-08-22",
+        updated:"2026-08-22",
+        status:"current",
+        statusLabel:"Актуально",
+        documentStatus:"Итоговое исследование",
+        version:"1.1",
+        href:"research/hydrodrill-liugong-9027f/"
+      }];
+
+      const state = { data:[], query:"", category:"all", status:"all", sort:"latest" };
+      const grid = document.getElementById("catalogGrid");
+      const empty = document.getElementById("emptyState");
+      const search = document.getElementById("searchInput");
+      const clearSearch = document.getElementById("clearSearch");
+      const sortSelect = document.getElementById("sortSelect");
+      const categoryFilters = document.getElementById("categoryFilters");
+      const statusFilters = document.getElementById("statusFilters");
+      const resultCount = document.getElementById("resultCount");
+      const activeFilterText = document.getElementById("activeFilterText");
+      const countStat = document.getElementById("countStat");
+      const currentStat = document.getElementById("currentStat");
+      const updatedStat = document.getElementById("updatedStat");
+      const themeToggle = document.getElementById("themeToggle");
+
+      const fmtDate = value => {
+        if(!value) return "—";
+        const parts = value.split("-").map(Number);
+        if(parts.length !== 3) return value;
+        return new Intl.DateTimeFormat("ru-RU",{day:"numeric",month:"long",year:"numeric"}).format(new Date(Date.UTC(parts[0],parts[1]-1,parts[2])));
+      };
+
+      const escapeHtml = value => String(value ?? "").replace(/[&<>'"]/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[char]));
+
+      const statusClass = status => status === "review" ? "review" : status === "archive" ? "archive" : "";
+      const statusRank = status => ({current:0,review:1,archive:2}[status] ?? 9);
+
+      function buildCategoryFilters(){
+        const categories = [...new Set(state.data.map(item => item.category).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"ru"));
+        categoryFilters.querySelectorAll("button").forEach(node => node.remove());
+        const all = document.createElement("button");
+        all.type="button"; all.className="chip active"; all.dataset.category="all"; all.textContent=`Все · ${state.data.length}`;
+        categoryFilters.appendChild(all);
+        categories.forEach(category => {
+          const count = state.data.filter(item => item.category === category).length;
+          const button = document.createElement("button");
+          button.type="button"; button.className="chip"; button.dataset.category=category; button.textContent=`${category} · ${count}`;
+          categoryFilters.appendChild(button);
+        });
+      }
+
+      function cardMarkup(item){
+        const topics = (item.topics || []).map(t => `<span class="topic">${escapeHtml(t)}</span>`).join("");
+        return `<a class="card" href="${escapeHtml(item.href)}" data-id="${escapeHtml(item.id)}">
+          <div class="card-main">
+            <div class="card-topline">
+              <div class="kicker"><span class="tag">${escapeHtml(item.category)}</span><span class="tag secondary">${escapeHtml(item.documentStatus || "Исследование")}</span></div>
+              <span class="status-badge ${statusClass(item.status)}"><span class="dot"></span>${escapeHtml(item.statusLabel || "Актуально")}</span>
+            </div>
+            <h3>${escapeHtml(item.title)}</h3>
+            <p class="subtitle">${escapeHtml(item.subtitle)}</p>
+            <div class="key-result"><small>Главный вывод</small><p>${escapeHtml(item.summary)}</p></div>
+            <div class="topics">${topics}</div>
+          </div>
+          <aside class="meta">
+            <dl>
+              <dt>Регион</dt><dd>${escapeHtml(item.region || "—")}</dd>
+              <dt>Актуальность</dt><dd>${escapeHtml(fmtDate(item.asOf))}</dd>
+              <dt>Обновлено</dt><dd>${escapeHtml(fmtDate(item.updated))}</dd>
+              <dt>Версия</dt><dd>${escapeHtml(item.version || "—")}</dd>
+            </dl>
+            <span class="open">Открыть исследование →</span>
+          </aside>
+        </a>`;
+      }
+
+      function filteredData(){
+        const q = state.query.trim().toLocaleLowerCase("ru");
+        let items = state.data.filter(item => {
+          const categoryOk = state.category === "all" || item.category === state.category;
+          const statusOk = state.status === "all" || item.status === state.status;
+          if(!categoryOk || !statusOk) return false;
+          if(!q) return true;
+          const haystack = [item.title,item.subtitle,item.summary,item.category,item.region,item.documentStatus,...(item.topics || [])].join(" ").toLocaleLowerCase("ru");
+          return haystack.includes(q);
+        });
+        if(state.sort === "topic") items.sort((a,b)=>(a.category||"").localeCompare(b.category||"","ru") || a.title.localeCompare(b.title,"ru"));
+        else if(state.sort === "status") items.sort((a,b)=>statusRank(a.status)-statusRank(b.status) || new Date(b.updated)-new Date(a.updated));
+        else if(state.sort === "asof") items.sort((a,b)=>new Date(b.asOf)-new Date(a.asOf));
+        else items.sort((a,b)=>new Date(b.updated)-new Date(a.updated));
+        return items;
+      }
+
+      function render(){
+        const items = filteredData();
+        grid.innerHTML = items.map(cardMarkup).join("");
+        empty.classList.toggle("visible",items.length===0);
+        grid.style.display = items.length ? "grid" : "none";
+        resultCount.innerHTML = `<strong>${items.length}</strong> ${items.length===1?"материал":"материалов"}`;
+        const parts=[];
+        if(state.category!=="all") parts.push(`тема: ${state.category}`);
+        if(state.status!=="all") {
+          const label={current:"актуально",review:"требует актуализации",archive:"архив"}[state.status] || state.status;
+          parts.push(`статус: ${label}`);
+        }
+        if(state.query) parts.push(`поиск: «${state.query}»`);
+        activeFilterText.textContent = parts.length ? parts.join(" · ") : "Показаны все исследования";
+      }
+
+      function updateHeroStats(){
+        const count=state.data.length;
+        const current=state.data.filter(x=>x.status==="current").length;
+        const latest=state.data.map(x=>x.updated).filter(Boolean).sort().at(-1);
+        countStat.textContent = `${count} ${count===1?"опубликованное исследование":"опубликованных исследований"}`;
+        currentStat.textContent = `Актуальные материалы: ${current}`;
+        updatedStat.textContent = `Последнее обновление: ${fmtDate(latest)}`;
+      }
+
+      categoryFilters.addEventListener("click",event=>{
+        const button=event.target.closest("button[data-category]"); if(!button) return;
+        state.category=button.dataset.category;
+        categoryFilters.querySelectorAll("button[data-category]").forEach(b=>b.classList.toggle("active",b===button));
+        render();
+      });
+
+      statusFilters.addEventListener("click",event=>{
+        const button=event.target.closest("button[data-status]"); if(!button) return;
+        state.status=button.dataset.status;
+        statusFilters.querySelectorAll("button[data-status]").forEach(b=>b.classList.toggle("active",b===button));
+        render();
+      });
+
+      search.addEventListener("input",()=>{
+        state.query=search.value.trim();
+        clearSearch.classList.toggle("visible",search.value.length>0);
+        render();
+      });
+      clearSearch.addEventListener("click",()=>{search.value="";state.query="";clearSearch.classList.remove("visible");search.focus();render();});
+      sortSelect.addEventListener("change",()=>{state.sort=sortSelect.value;render();});
+
+      const storedTheme = (()=>{try{return localStorage.getItem("research-library-theme")}catch{return null}})();
+      if(storedTheme==="dark") document.body.classList.add("dark");
+      themeToggle.textContent=document.body.classList.contains("dark")?"☀":"☾";
+      themeToggle.addEventListener("click",()=>{
+        document.body.classList.toggle("dark");
+        const dark=document.body.classList.contains("dark");
+        themeToggle.textContent=dark?"☀":"☾";
+        try{localStorage.setItem("research-library-theme",dark?"dark":"light")}catch{}
+      });
+
+      fetch("data/researches.json",{cache:"no-store"})
+        .then(response=>{if(!response.ok) throw new Error("catalog");return response.json()})
+        .then(data=>{state.data=Array.isArray(data)&&data.length?data:fallbackData})
+        .catch(()=>{state.data=fallbackData})
+        .finally(()=>{buildCategoryFilters();updateHeroStats();render()});
+    })();
+  </script>
 </body>
 </html>
