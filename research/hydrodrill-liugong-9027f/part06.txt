@@ -1,0 +1,153 @@
+an class="floating-toc-label">Содержание</span>
+      <span class="floating-toc-step" id="floatingTocStep" aria-hidden="true">01</span>
+      <span class="floating-toc-chevron" aria-hidden="true">▲</span>
+    </button>
+  </div>
+
+
+  <div class="shell">
+    <aside class="sidebar" aria-label="Навигация по исследованию">
+      <div class="brandline">
+        <div class="brandmark">RP</div>
+        <div>
+          <b>Research Paper</b>
+          <small>HTML-стандарт · прототип 02</small>
+        </div>
+      </div>
+
+      <p class="toc-title">Содержание</p>
+      <nav class="toc" id="toc">
+        <a href="#decision">Решение за 60 секунд</a>
+        <a href="#architecture">Архитектура комплекта</a>
+        <a href="#algorithm">Алгоритм выбора</a>
+        <a href="#specification">Закупочная спецификация</a>
+        <a href="#comparison">Сравнение вариантов</a>
+        <a href="#risks">Критические риски</a>
+        <a href="#acceptance">Приёмка и испытание</a>
+        <a href="#economics">Экономика и производительность</a>
+        <a href="#deep-dive">Подробный технический разбор</a>
+        <a href="#sources">Источники</a>
+      </nav>
+
+      <div class="controls">
+        <p class="controls-title">Отображение</p>
+        <div class="control-row">
+          <button class="control-btn" type="button" data-font="-1" title="Уменьшить шрифт">A−</button>
+          <button class="control-btn" type="button" data-font="0" title="Стандартный шрифт">A</button>
+          <button class="control-btn" type="button" data-font="1" title="Увеличить шрифт">A+</button>
+        </div>
+        <div class="control-row">
+          <button class="control-btn" id="themeToggle" type="button">Ночной режим</button>
+          <button class="control-btn" id="printBtn" type="button">Печать / PDF</button>
+        </div>
+      </div>
+
+      <p class="sidebar-note">Структура чтения: <b>вывод → схема → ключевые данные → подробное обоснование</b>.</p>
+    </aside>
+
+    <main>
+      <details class="mobile-toc">
+        <summary>Содержание и настройки</summary>
+        <nav class="toc">
+          <a href="#decision">Решение за 60 секунд</a>
+          <a href="#architecture">Архитектура комплекта</a>
+          <a href="#algorithm">Алгоритм выбора</a>
+          <a href="#specification">Закупочная спецификация</a>
+          <a href="#comparison">Сравнение вариантов</a>
+          <a href="#risks">Критические риски</a>
+          <a href="#acceptance">Приёмка и испытание</a>
+          <a href="#economics">Экономика и производительность</a>
+          <a href="#deep-dive">Подробный технический разбор</a>
+          <a href="#sources">Источники</a>
+          <div class="control-row" style="margin-top:10px">
+            <button class="control-btn" type="button" data-font="-1">A−</button>
+            <button class="control-btn" type="button" data-font="0">A</button>
+            <button class="control-btn" type="button" data-font="1">A+</button>
+            <button class="control-btn theme-mobile" type="button">Ночной режим</button>
+            <button class="control-btn print-mobile" type="button">Печать</button>
+          </div>
+        </nav>
+      </details>
+
+      <header class="hero">
+        <p class="eyebrow">Техническое исследование · закупочное решение</p>
+        <h1>Гидробуровой комплект для LiuGong 9027F ZTS</h1>
+        <p class="hero-subtitle">Подбор гидровращателя, шнека и присоединительного оборудования для скважин Ø500 × 2000 мм под закладные опор освещения.</p>
+        <div class="meta">
+          <span>Актуальность: 22.08.2026</span>
+          <span>Регион: Краснодарский край</span>
+          <span>Машина: 2,68–2,75 т</span>
+          <span>Статус: условный закупочный допуск</span>
+        </div>
+      </header>
+
+      <article class="document">
+        <section class="section" id="decision">
+          <div class="section-kicker" data-step="01">Решение за 60 секунд</div>
+          <h2>Покупать MTA-4000, но только после двух натурных проверок</h2>
+          <p class="intro">Сначала — итоговое решение. Ниже — визуальная модель и ключевые параметры. Полный технический разбор вынесен в нижнюю часть документа.</p>
+
+          <div class="conclusion">
+            <div class="conclusion-body">
+              <p class="conclusion-label">Главный вывод</p>
+              <strong>Оптимальная конфигурация: «Метатэкс» MTA-4000 + D65 + усиленный шнек Ø500 × 1500 мм + удлинитель 500 мм.</strong>
+              <p>MTA-4000 даёт наиболее рациональный баланс момента <b>4 200 Н·м</b>, массы <b>56 кг</b>, нижней границы потока <b>40 л/мин</b> и совместимости с мини-экскаваторами класса 2–4 т.<sup><a href="#src-2">2</a></sup></p>
+            </div>
+          </div>
+
+          <div class="critical-strip">
+            <div class="symbol">!</div>
+            <div><b>Заказ пока не выпускать в производство.</b> <span>Сначала измерить фактические Q/P AUX на прогретой машине и снять размеры пальцев, БРС, резьб и быстросъёма.</span></div>
+          </div>
+
+          <div class="quick-grid">
+            <div class="quick-card">
+              <small>Основной комплект</small>
+              <b>MTA-4000 · D65</b>
+              <p>4,2 кН·м; 40–80 л/мин; 60–200 бар.</p>
+            </div>
+            <div class="quick-card">
+              <small>Ориентир бюджета</small>
+              <b>260–300 тыс. ₽</b>
+              <p>Полный комплект; заложить резерв 10–15%.</p>
+            </div>
+            <div class="quick-card">
+              <small>Закупочный ворот</small>
+              <b>≥40 л/мин под нагрузкой</b>
+              <p>Желательно при 180–200 бар без перегрева.</p>
+            </div>
+          </div>
+
+          <div class="reading-levels" aria-label="Уровни чтения документа">
+            <div class="reading-level"><b>1 минута</b><span>решение и запрет на преждевременный заказ</span></div>
+            <div class="reading-level"><b>5 минут</b><span>схемы, алгоритм выбора, спецификация и риски</span></div>
+            <div class="reading-level"><b>полная проверка</b><span>техническое обоснование, расчёты и источники</span></div>
+          </div>
+        </section>
+
+        <section class="section" id="architecture">
+          <div class="section-kicker" data-step="02">Архитектура комплекта</div>
+          <h2>Одна цепочка без неопределённых переходников</h2>
+          <p class="intro">Целевая архитектура строится на едином посадочном стандарте D65 и штатной двусторонней AUX-линии LiuGong.</p>
+
+          <div class="conclusion">
+            <div class="conclusion-body">
+              <p class="conclusion-label">Ключевой вывод</p>
+              <strong>Все силовые и присоединительные элементы должны быть согласованы как единая колонна, а не собраны по одному совпадению «D65».</strong>
+              <p>Совпадение диаметра не гарантирует совпадение длины посадки, отверстий под штифт и допускаемого момента.</p>
+            </div>
+          </div>
+
+          <div class="flow-wrap" role="img" aria-label="Схема рекомендуемого гидробурового комплекта">
+            <div class="flow">
+              <div class="flow-node">
+                <span class="flow-no">01</span>
+                <div><b>LiuGong 9027F ZTS</b><span>базовая машина 2,68–2,75 т</span></div>
+              </div>
+              <div class="flow-node">
+                <span class="flow-no">02</span>
+                <div><b>2-way AUX</b><span>пропорциональное управление и реверс</span></div>
+              </div>
+              <div class="flow-node">
+                <span class="flow-no">03</span>
+                <div><b>РВД + БРС</b><span>полный проход, по фактической машине</
