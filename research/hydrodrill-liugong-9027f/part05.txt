@@ -1,0 +1,208 @@
+     text-transform: uppercase;
+    }
+
+    .floating-toc-head strong {
+      display: block;
+      overflow: hidden;
+      color: var(--ink-strong);
+      font: 800 14px/1.3 Arial, sans-serif;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .floating-toc-close {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--muted);
+      background: var(--paper-2);
+      cursor: pointer;
+      font: 800 17px/1 Arial, sans-serif;
+    }
+
+    .floating-toc-nav {
+      display: grid;
+      gap: 3px;
+      padding: 10px;
+    }
+
+    .floating-toc-nav a {
+      padding: 10px 11px;
+      font-size: 13px;
+    }
+
+    .floating-toc-nav a.active {
+      box-shadow: inset 3px 0 0 var(--accent);
+    }
+
+    .floating-toc-foot {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 10px;
+      border-top: 1px solid var(--line);
+      background: var(--paper-2);
+    }
+
+    .floating-toc-foot a,
+    .floating-toc-foot button {
+      flex: 1;
+      min-height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      color: var(--muted);
+      background: var(--paper);
+      text-decoration: none;
+      cursor: pointer;
+      font: 800 11px/1 Arial, sans-serif;
+    }
+
+    .floating-toc-foot a:hover,
+    .floating-toc-foot button:hover {
+      color: var(--accent-deep);
+      border-color: var(--accent);
+    }
+
+
+    .mobile-toc { display: none; }
+
+    @media (max-width: 1160px) {
+      .shell { grid-template-columns: 1fr; width: min(1040px, calc(100% - 24px)); }
+      .sidebar { display: none; }
+      .mobile-toc { display: block; margin-bottom: 14px; }
+      .mobile-toc summary { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow-soft); }
+      .mobile-toc .toc { padding: 12px; border: 1px solid var(--line); border-top: 0; border-radius: 0 0 14px 14px; background: var(--paper); }
+    }
+
+    @media (max-width: 820px) {
+      :root { --font-size: 16px; }
+      .hero { border-radius: 22px; }
+      .document { border-radius: 22px; }
+      .quick-grid,
+      .reading-levels,
+      .gate-grid,
+      .risk-grid,
+      .spec-grid,
+      .cost-grid { grid-template-columns: 1fr; }
+      .decision-branches { grid-template-columns: 1fr 1fr; }
+      .timeline { grid-template-columns: 1fr; gap: 14px; }
+      .timeline::before { top: 12px; bottom: 12px; left: 21px; right: auto; width: 2px; height: auto; }
+      .time-step { display: grid; grid-template-columns: 44px 1fr; column-gap: 13px; align-items: start; }
+      .time-dot { margin: 0; grid-row: span 2; }
+      .time-step b, .time-step p { text-align: left; }
+      .spec-list li { grid-template-columns: 1fr; gap: 4px; }
+      .deep-intro { grid-template-columns: 1fr; align-items: start; }
+      .deep-tag { justify-self: start; }
+    }
+
+    @media (max-width: 520px) {
+      .floating-toc {
+        right: max(10px, env(safe-area-inset-right));
+        bottom: max(10px, env(safe-area-inset-bottom));
+      }
+      .floating-toc-toggle { min-height: 49px; padding: 7px 9px 7px 8px; }
+      .floating-toc-icon { width: 33px; height: 33px; flex-basis: 33px; }
+      .floating-toc-label { font-size: 11px; }
+      .floating-toc-panel { width: min(350px, calc(100vw - 20px)); max-height: 72vh; }
+      .shell { width: min(100% - 14px, 1040px); padding-top: 8px; }
+      .hero, .section { padding: 24px 19px; }
+      .hero h1 { font-size: 32px; }
+      .meta span { font-size: 10px; }
+      .decision-branches { grid-template-columns: 1fr; }
+      .quick-card b { font-size: 18px; }
+      .footer { padding: 20px 19px; }
+    }
+
+    @media print {
+      :root {
+        --canvas: white;
+        --canvas-2: white;
+        --paper: white;
+        --paper-2: #faf7f1;
+        --ink: #1d1a17;
+        --ink-strong: #111;
+        --muted: #555;
+      }
+      body { background: white; font-size: 11pt; }
+      body::before, .progress, .sidebar, .mobile-toc, .floating-toc, .controls { display: none !important; }
+      .shell { display: block; width: 100%; padding: 0; }
+      .hero, .document { box-shadow: none; border-radius: 0; }
+      .hero {
+        min-height: 250mm;
+        margin: 0;
+        padding: 28mm 20mm;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        break-after: page;
+      }
+      .document { border: 0; }
+      .section { break-inside: auto; }
+      h2, h3, h4, summary { break-after: avoid; }
+      .conclusion, .critical-strip, .quick-card, .reading-level, .flow-node,
+      .branch, .gate, .spec-card, .score-row, .risk-card, .time-step,
+      .cost-total, .cost-row, tr { break-inside: avoid; }
+      .flow-wrap, .table-wrap { overflow: visible; }
+      .flow { min-width: 0; grid-template-columns: repeat(4, 1fr); }
+      .flow-node:not(:last-child)::after { display: none; }
+      details { break-inside: auto; }
+      details > * { display: block !important; }
+      details:not([open]) .details-body { display: block !important; }
+      summary::after { display: none; }
+      a { color: inherit; text-decoration: none; }
+      .critical-strip .symbol,
+      .section-kicker::before,
+      .gate-no,
+      .time-dot,
+      .brandmark {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      h2 { font-size: 23pt; }
+      h3 { font-size: 16pt; }
+      .intro { font-size: 12.5pt; }
+      .conclusion strong { font-size: 16pt; }
+      .footer { border-radius: 0; }
+    }
+  </style>
+</head>
+<body>
+  <a href="../../" aria-label="Вернуться в библиотеку исследований" style="position:fixed;left:14px;bottom:14px;z-index:9998;text-decoration:none;background:#3f4a36;color:#f7f4e9;border:1px solid rgba(255,255,255,.18);padding:9px 12px;border-radius:999px;font:600 13px/1.2 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;box-shadow:0 8px 24px rgba(31,36,27,.16)">← Библиотека</a>
+  <div class="progress" id="progress"></div>
+
+  <div class="floating-toc" id="floatingToc">
+    <div class="floating-toc-panel" id="floatingTocPanel" aria-label="Постоянное содержание">
+      <div class="floating-toc-head">
+        <div>
+          <small>Текущий раздел</small>
+          <strong id="floatingTocCurrent">Решение за 60 секунд</strong>
+        </div>
+        <button class="floating-toc-close" id="floatingTocClose" type="button" aria-label="Закрыть содержание">×</button>
+      </div>
+      <nav class="toc floating-toc-nav">
+        <a href="#decision">Решение за 60 секунд</a>
+        <a href="#architecture">Архитектура комплекта</a>
+        <a href="#algorithm">Алгоритм выбора</a>
+        <a href="#specification">Закупочная спецификация</a>
+        <a href="#comparison">Сравнение вариантов</a>
+        <a href="#risks">Критические риски</a>
+        <a href="#acceptance">Приёмка и испытание</a>
+        <a href="#economics">Экономика и производительность</a>
+        <a href="#deep-dive">Подробный технический разбор</a>
+        <a href="#sources">Источники</a>
+      </nav>
+      <div class="floating-toc-foot">
+        <a href="#decision">К началу</a>
+        <button class="theme-mobile" type="button">Ночной режим</button>
+        <button class="print-mobile" type="button">Печать</button>
+      </div>
+    </div>
+    <button class="floating-toc-toggle" id="floatingTocToggle" type="button" aria-expanded="false" aria-controls="floatingTocPanel">
+      <span class="floating-toc-icon" aria-hidden="true">☰</span>
+      <sp
