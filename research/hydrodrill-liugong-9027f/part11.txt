@@ -1,0 +1,91 @@
+et(key, value) { try { localStorage.setItem(key, value); } catch (_) {} }
+      };
+
+      const savedTheme = storage.get('research-theme');
+      if (savedTheme === 'night' || savedTheme === 'paper') root.dataset.theme = savedTheme;
+      applyThemeLabel();
+
+      themeButtons.forEach(btn => btn.addEventListener('click', () => {
+        root.dataset.theme = root.dataset.theme === 'night' ? 'paper' : 'night';
+        storage.set('research-theme', root.dataset.theme);
+        applyThemeLabel();
+      }));
+
+      printButtons.forEach(btn => btn.addEventListener('click', () => window.print()));
+
+      fontButtons.forEach(btn => btn.addEventListener('click', () => {
+        const mode = Number(btn.dataset.font);
+        const size = mode === -1 ? fontSizes[0] : mode === 1 ? fontSizes[2] : fontSizes[1];
+        root.style.setProperty('--font-size', size + 'px');
+        storage.set('research-font', String(size));
+      }));
+
+      const savedFont = Number(storage.get('research-font'));
+      if (fontSizes.includes(savedFont)) root.style.setProperty('--font-size', savedFont + 'px');
+
+      const setFloatingTocOpen = (open) => {
+        if (!floatingToc || !floatingTocToggle) return;
+        floatingToc.classList.toggle('is-open', open);
+        floatingTocToggle.setAttribute('aria-expanded', String(open));
+        if (open) {
+          requestAnimationFrame(() => {
+            const active = floatingTocPanel?.querySelector('.toc a.active');
+            active?.scrollIntoView({ block: 'nearest' });
+          });
+        }
+      };
+
+      floatingTocToggle?.addEventListener('click', () => {
+        setFloatingTocOpen(!floatingToc.classList.contains('is-open'));
+      });
+      floatingTocClose?.addEventListener('click', () => setFloatingTocOpen(false));
+
+      document.addEventListener('click', event => {
+        if (floatingToc && !floatingToc.contains(event.target)) setFloatingTocOpen(false);
+      });
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') setFloatingTocOpen(false);
+      });
+
+      const updateFloatingToc = section => {
+        if (!section) return;
+        const link = document.querySelector(`.toc a[href="#${section.id}"]`);
+        if (floatingTocCurrent && link) floatingTocCurrent.textContent = link.textContent.trim();
+        const index = sections.indexOf(section);
+        if (floatingTocStep && index >= 0) floatingTocStep.textContent = String(index + 1).padStart(2, '0');
+      };
+
+      const updateProgress = () => {
+        const scrollTop = window.scrollY;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        progress.style.width = (max > 0 ? (scrollTop / max) * 100 : 0) + '%';
+      };
+      updateProgress();
+      window.addEventListener('scroll', updateProgress, { passive: true });
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+          const visible = entries
+            .filter(entry => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          if (!visible) return;
+          tocLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + visible.target.id));
+          updateFloatingToc(visible.target);
+        }, { rootMargin: '-18% 0px -68% 0px', threshold: [0.01, 0.15, 0.4] });
+        sections.forEach(section => observer.observe(section));
+      } else if (tocLinks[0]) {
+        tocLinks[0].classList.add('active');
+        updateFloatingToc(sections[0]);
+      }
+
+      updateFloatingToc(sections[0]);
+
+      tocLinks.forEach(link => link.addEventListener('click', () => {
+        const mobile = link.closest('.mobile-toc');
+        if (mobile) mobile.removeAttribute('open');
+        if (link.closest('.floating-toc')) setFloatingTocOpen(false);
+      }));
+    })();
+  </script>
+</body>
+</html>
