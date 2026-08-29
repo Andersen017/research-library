@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Концептуальная архитектура цифровой экосистемы повседневной заботы о здоровье: продуктовая модель, доказательная база, правовые границы, MVP и пилот.">
+<link rel="canonical" href="https://andersen017.github.io/research-library/research/everyday-health-care-ecosystem/">
+<title>Экосистема повседневной заботы о здоровье — концептуальная архитектура</title>
+<style>
+:root{
+  --canvas:#e8e9df;--paper:#f8f6ed;--ink:#292d26;--muted:#687064;
+  --line:#d0d4c7;--olive:#667456;--deep:#3f4d37;--soft:#e4e9dd;
+  --ochre:#a4874d;--warn:#8a5d54;--blue:#607b7b;--shadow:0 16px 48px rgba(45,55,39,.09)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 15% 8%,#f4f2e8 0,transparent 32%),var(--canvas);color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.62}
+a{color:var(--deep);text-underline-offset:3px}
+.page{width:min(1080px,calc(100% - 22px));margin:0 auto;padding:18px 0 80px}
+.hero{background:linear-gradient(135deg,var(--deep),#58654d);color:#fbfaf4;border-radius:24px;padding:36px;box-shadow:var(--shadow)}
+.hero .kicker{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#dfe5d7}
+.hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,6vw,58px);line-height:1.03;margin:9px 0 13px;max-width:940px}
+.hero p{max-width:900px;margin:0;color:#e6eadf;font-size:17px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.badge{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);font-size:12px}
+.block{margin-top:18px;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:27px;box-shadow:0 8px 28px rgba(45,55,39,.05)}
+h2,h3{scroll-margin-top:24px}
+h2{font-family:Georgia,"Times New Roman",serif;font-size:30px;line-height:1.12;margin:0 0 16px;color:var(--deep)}
+h3{font-size:19px;margin:24px 0 10px;color:var(--deep)}
+p{margin:9px 0 14px}.lead{font-size:18px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:5px}
+.decision{background:var(--soft);border-left:5px solid var(--olive);padding:18px 20px;border-radius:12px;margin:14px 0}
+.decision strong{color:var(--deep)}
+.risk{background:#efe3df;border-left:5px solid var(--warn);padding:15px 18px;border-radius:12px;margin-top:16px}
+.note{background:rgba(164,135,77,.10);border-left:5px solid var(--ochre);padding:15px 18px;border-radius:12px;margin-top:16px}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:18px 0 4px}
+.fact{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:14px}
+.fact strong{display:block;color:var(--deep);font-family:Georgia,"Times New Roman",serif;font-size:25px;line-height:1.1;margin-bottom:4px}
+.fact span{font-size:12px;color:var(--muted)}
+.vector{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:18px 0}
+.vector-step{position:relative;background:var(--soft);border:1px solid #cbd3c1;border-radius:13px;padding:14px 11px;min-height:124px}
+.vector-step:not(:last-child):after{content:"→";position:absolute;right:-12px;top:44%;z-index:2;color:var(--olive);font-weight:900;background:var(--paper);border-radius:99px;padding:0 3px}
+.vector-step span{display:block;color:var(--olive);font-weight:850;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.vector-step strong{display:block;color:var(--deep);margin:6px 0;font-size:15px;line-height:1.25}
+.vector-step small{color:var(--muted);font-size:12px;line-height:1.35}
+.arch{margin:20px 0;display:grid;grid-template-columns:1fr;gap:10px}
+.arch-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;align-items:stretch}
+.arch-node{background:#fbfaf5;border:1px solid var(--line);border-radius:13px;padding:14px;text-align:center;display:flex;align-items:center;justify-content:center;min-height:70px;color:var(--deep);font-weight:750}
+.arch-node.primary{background:var(--soft);border:2px solid var(--olive)}
+.arch-node.evidence{background:var(--deep);color:#fff;grid-column:1/-1;min-height:54px}
+.arch-arrow{text-align:center;color:var(--olive);font-size:24px;font-weight:900;line-height:1}
+.contours{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
+.contour{border-top:4px solid var(--olive);background:rgba(102,116,86,.07);padding:16px;border-radius:0 0 13px 13px}
+.contour strong{display:block;color:var(--deep);margin-bottom:6px}
+.contour p{font-size:13px;margin:0;color:var(--muted)}
+.ladder{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}
+.level{border-radius:14px;padding:16px;border:1px solid var(--line);background:#fbfaf5}
+.level b{display:block;margin-bottom:5px}.level small{color:var(--muted)}
+.level.green{border-top:5px solid #6f8b5d}.level.yellow{border-top:5px solid #b59a51}.level.red{border-top:5px solid #9d665c}.level.urgent{border-top:5px solid #74433e}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.panel{border:1px solid var(--line);border-radius:15px;padding:18px;background:#fbfaf5}
+.panel h3{margin:0 0 10px}.panel ul{margin:0}
+.include{border-top:4px solid var(--olive)}.exclude{border-top:4px solid var(--warn)}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;margin:16px 0 22px}
+table{border-collapse:collapse;width:100%;min-width:760px;background:#fbfaf5;font-size:13.5px}
+th,td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+th{background:#e9ede3;color:var(--deep);position:sticky;top:0}
+tr:nth-child(even) td{background:#f6f5ee}
+.sources{font-size:13px}.sources li{margin:8px 0}
+.source-tag{font-size:11px;padding:2px 6px;border-radius:5px;background:var(--soft);color:var(--deep);font-weight:700;white-space:nowrap}
+.formula{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:18px 0}
+.formula span{padding:9px 11px;border-radius:10px;background:var(--soft);border:1px solid var(--line);font-weight:750;color:var(--deep)}
+.formula i{font-style:normal;color:var(--olive);font-weight:900}
+ul,ol{padding-left:23px}li{margin:5px 0}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:22px 0 0}
+.float{position:fixed;right:16px;bottom:16px;z-index:30;display:flex;gap:8px;align-items:flex-end}
+.float button{border:0;border-radius:999px;background:var(--deep);color:white;padding:13px 16px;font-weight:800;box-shadow:0 8px 28px rgba(0,0,0,.2);cursor:pointer}
+.float .print-btn{background:var(--ochre)}
+.menu-wrap{position:relative}.menu{display:none;position:absolute;right:0;bottom:54px;width:min(370px,calc(100vw - 28px));max-height:68vh;overflow:auto;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:10px;box-shadow:var(--shadow)}
+.menu.open{display:block}.menu a{display:block;text-decoration:none;padding:9px 10px;border-radius:9px;font-size:13px}.menu a:hover{background:var(--soft)}
+@media(max-width:900px){.vector{grid-template-columns:repeat(3,1fr)}.vector-step:nth-child(3):after{display:none}.contours{grid-template-columns:1fr 1fr}.facts{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.page{width:min(100% - 14px,1080px);padding-top:7px}.hero{padding:25px 20px;border-radius:18px}.block{padding:20px 16px;border-radius:17px}.arch-row,.ladder,.two{grid-template-columns:1fr}.contours{grid-template-columns:1fr}.vector{grid-template-columns:1fr}.vector-step:after{display:none}.float .print-btn{display:none}}
+@media(max-width:430px){.facts{grid-template-columns:1fr 1fr}.fact strong{font-size:22px}.hero h1{font-size:34px}.float button{padding:12px 14px}}
+@media print{@page{size:A4;margin:12mm}body{background:white;color:#222}.page{width:100%;padding:0}.hero,.block{box-shadow:none;border:0}.hero{border-radius:0;padding:22px;background:#3f4d37!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.block{padding:14px 0;margin-top:10px}.float{display:none}.table-wrap{overflow:visible;border:0}table{min-width:0;font-size:9.5px}th,td{padding:7px 6px}h2,h3{break-after:avoid}.contour,.panel,.level,.decision,.risk,.note,.vector-step{break-inside:avoid}.sources{font-size:10px}a{color:inherit;text-decoration:none}}
+@media(prefers-color-scheme:dark){:root{--canvas:#22251f;--paper:#2b2f28;--ink:#ecece4;--muted:#b9c0b4;--line:#434a40;--soft:#353e31;--deep:#d8e1d0}.hero{background:linear-gradient(135deg,#34422e,#4c5b43)}.panel,.level,.arch-node,table{background:#2f342d}th{background:#354033}tr:nth-child(even) td{background:#30362e}.risk{background:#493632}.note{background:#463f2f}.contour{background:#31392e}}
+</style>
+</head>
+<body>
+<main class="page">
+<header class="hero">
+  <div class="kicker">Research Library · Концептуальная архитектура</div>
+  <h1>Экосистема повседневной заботы о здоровье</h1>
+  <p>Как превратить понятную модель питания в длительную поддерживающую среду: от одного посильного действия — к устойчивой привычке, объективной динамике и медицинской помощи только тогда, когда она действительно нужна.</p>
+  <div class="badges">
+    <span class="badge">Актуальность: 29.08.2026</span>
+    <span class="badge">Россия</span>
+    <span class="badge">Digital Health</span>
+    <span class="badge">Поведенческий дизайн</span>
+    <span class="badge">MVP + пилот</span>
+  </div>
+</header>
+
+<section class="block" id="decision">
+  <h2>Ключевой вывод</h2>
+  <div class="decision"><strong>Проект следует строить не как «суперапп здоровья», а как систему минимально достаточной заботы.</strong> Она помогает человеку выбрать одно понятное действие, повторить его, заметить эффект, вернуться после срыва и только при необходимости перейти к координатору или врачу.</div>
+  <p class="lead">Harvard Healthy Eating Plate — сильная входная модель, но не весь продукт. Защищаемое ядро проекта возникает на пересечении локализованного питания, мягкого поведенческого сопровождения, доказательной фильтрации и безопасной маршрутизации между самопомощью и медициной.</p>
+  <div class="facts">
+    <div class="fact"><strong>1 действие</strong><span>на ближайший день вместо длинного списка требований</span></div>
+    <div class="fact"><strong>0 обнулений</strong><span>прогресс не исчезает после пропуска или срыва</span></div>
+    <div class="fact"><strong>4 уровня</strong><span>самопомощь, координатор, врач, срочная помощь</span></div>
+    <div class="fact"><strong>12 недель</strong><span>минимальный горизонт первого продуктового пилота</span></div>
+  </div>
+</section>
+
+<section class="block" id="vector">
+  <h2>Как сформировался вектор проекта</h2>
+  <p>Идея выросла не из перечня функций, а из последовательного расширения задачи. Каждый следующий слой появился потому, что предыдущий не решал проблему устойчивости в одиночку.</p>
+  <div class="vector" aria-label="Эволюция идеи проекта">
+    <div class="vector-step"><span>01 · Вход</span><strong>Гарвардская тарелка</strong><small>Простая визуальная модель сбалансированного приёма пищи.</small></div>
+    <div class="vector-step"><span>02 · Действие</span><strong>Доступная замена</strong><small>Не идеальное меню, а посильный следующий выбор в реальном контексте.</small></div>
+    <div class="vector-step"><span>03 · Повтор</span><strong>Малая привычка</strong><small>Один шаг, стабильный контекст, напоминание и обратная связь.</small></div>
+    <div class="vector-step"><span>04 · Возврат</span><strong>Без стыда и сброса</strong><small>Срыв становится сигналом для адаптации, а не поражением.</small></div>
+    <div class="vector-step"><span>05 · Данные</span><strong>Объективная динамика</strong><small>Самочувствие, действия и валидные измерения помогают уточнять следующий шаг.</small></div>
+    <div class="vector-step"><span>06 · Среда</span><strong>Экосистема заботы</strong><small>Сообщество, устройства и специалисты подключаются дозированно.</small></div>
+  </div>
+  <div class="note"><strong>Смысловой хук:</strong> «Я человек, который о себе заботится». Он переводит мотивацию из режима временной дисциплины в идентичность, которую человек подтверждает небольшими действиями.</div>
+</section>
+
+<section class="block" id="architecture">
+  <h2>Концептуальная архитектура</h2>
+  <div class="arch" role="img" aria-label="Архитектура от доказательной базы до следующего действия и маршрутизации">
+    <div class="arch-node evidence">Доказательная база и правила безопасности</div>
+    <div class="arch-arrow">↓</div>
+    <div class="arch-row">
+      <div class="arch-node">Карта человека и контекста</div>
+      <div class="arch-node primary">Движок следующего действия</div>
+      <div class="arch-node">Повтор и мягкая обратная связь</div>
+      <div class="arch-node">Недельный обзор динамики</div>
+      <div class="arch-node">Маршрутизация помощи</div>
+    </div>
+    <div class="arch-arrow">↓</div>
+    <div class="arch-row">
+      <div class="arch-node">Питание и бытовые ограничения</div>
+      <div class="arch-node">Самочувствие и поведение</div>
+      <div class="arch-node">Смартфон и BYOD‑устройства</div>
+      <div class="arch-node">Координатор и сообщество</div>
+      <div class="arch-node">Лицензированный врач</div>
+    </div>
+  </div>
+  <p>Главный продуктовый объект — не профиль, балл здоровья или дневник калорий, а <strong>следующее действие</strong>. Его сложность меняется по результатам выполнения, самочувствию, бытовому контексту и сигналам безопасности.</p>
+
+  <div class="contours">
+    <div class="contour"><strong>1. Карта человека</strong><p>Цели, бюджет, кухня, график, семья, ограничения, диагнозы, лекарства, готовность к изменениям.</p></div>
+    <div class="contour"><strong>2. Движок замен</strong><p>Локальные продукты и блюда: дешевле, проще, ближе к привычной кухне и доступной инфраструктуре.</p></div>
+    <div class="contour"><strong>3. Поведенческий контур</strong><p>Выбор, план, подсказка, повтор, обратная связь и сценарий возвращения после пропуска.</p></div>
+    <div class="contour"><strong>4. Недельный обзор</strong><p>Что получилось, что мешало, как меняется самочувствие и какое действие разумно выбрать дальше.</p></div>
+    <div class="contour"><strong>5. Социальное тело</strong><p>Небольшие группы, партнёр поддержки и модерация без соревнования «кто здоровее».</p></div>
+    <div class="contour"><strong>6. Лестница помощи</strong><p>Понятный переход от самопомощи к человеку‑координатору, врачу или срочной службе.</p></div>
+  </div>
+</section>
+
+<section class="block" id="evidence">
+  <h2>Что подтверждает исследование</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Область</th><th>Вывод для продукта</th><th>Что нельзя обещать</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Модель тарелки</strong></td><td>Хороший визуальный интерфейс для структуры рациона; требует культурной и ценовой локализации.</td><td>Что сама схема является самостоятельным клиническим протоколом с гарантированным эффектом.</td></tr>
+        <tr><td><strong>Формирование привычек</strong></td><td>Работают повторение, стабильный контекст, достижимая сложность и постепенное развитие.</td><td>Универсальный срок «21 день» или одинаковый темп для всех.</td></tr>
+        <tr><td><strong>Поведенческие техники</strong></td><td>Нужны цели, самонаблюдение, обратная связь, планы действий и своевременные подсказки.</td><td>Что баллы, серии и уведомления сами по себе создают устойчивое изменение.</td></tr>
+        <tr><td><strong>Мотивация</strong></td><td>Поддерживать автономию, чувство компетентности и связь с другими людьми.</td><td>Давление, стыд, наказание за пропуск и скрытую манипуляцию.</td></tr>
+        <tr><td><strong>Носимые устройства</strong></td><td>Подключать только валидные сигналы и объяснять границы точности.</td><td>Медицинскую точность любого потребительского датчика.</td></tr>
+        <tr><td><strong>Персонализация</strong></td><td>Начинать с контекста, образа жизни и клинических потребностей.</td><td>Необходимость генетики, микробиома или непрерывного мониторинга глюкозы для каждого здорового пользователя.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="risk"><strong>Красная линия доказательности:</strong> IgG‑панели пищевой непереносимости не входят в продукт. Генетические, микробиомные и CGM‑модули могут рассматриваться только после отдельной проверки клинической пользы для конкретной группы.</div>
+</section>
+
+<section class="block" id="care">
+  <h2>Лестница помощи и безопасность</h2>
+  <p>Система должна увеличивать уровень вмешательства только тогда, когда это оправдано риском или запросом человека.</p>
+  <div class="ladder">
+    <div class="level green"><b>Зелёный · самопомощь</b><small>Обычные рекомендации, действия, недельные обзоры и профилактические материалы.</small></div>
+    <div class="level yellow"><b>Жёлтый · координатор</b><small>Повторяющиеся трудности, потеря мотивации, неясные измерения, потребность в человеческой поддержке.</small></div>
+    <div class="level red"><b>Красный · врач</b><small>Клинические симптомы, значимые отклонения, хроническое заболевание, вопросы лечения или лекарств.</small></div>
+    <div class="level urgent"><b>Срочный · экстренная помощь</b><small>Признаки неотложного состояния: система не консультирует, а направляет к экстренной службе.</small></div>
+  </div>
+  <div class="note"><strong>Принцип:</strong> алгоритм может распознавать ограничения, объяснять и маршрутизировать, но не должен незаметно превращать wellness‑сервис в диагностику или назначение лечения.</div>
+</section>
+
+<section class="block" id="legal">
+  <h2>Правовая модель для России</h2>
+  <div class="two">
+    <div class="panel">
+      <h3>Wellness‑платформа</h3>
+      <ul>
+        <li>обучение, привычки и профилактические сценарии;</li>
+        <li>пользовательские дневники и данные устройств;</li>
+        <li>сигналы безопасности и направление за помощью;</li>
+        <li>отдельное согласие и минимизация медицинских данных.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Медицинский партнёр</h3>
+      <ul>
+        <li>лицензированная организация и медицинские работники;</li>
+        <li>телемедицинские консультации в разрешённых законом пределах;</li>
+        <li>дистанционное наблюдение после очного установления диагноза и назначения лечения;</li>
+        <li>медицинская документация, ответственность и клинические протоколы.</li>
+      </ul>
+    </div>
+  </div>
+  <p>Данные о здоровье относятся к специальной категории персональных данных. Архитектура должна заранее учитывать локализацию баз данных, разграничение ролей, журналирование доступа, сроки хранения, отзыв согласия и правила трансграничной передачи.</p>
+  <div class="risk"><strong>Юридический рубеж:</strong> если программный модуль выдаёт индивидуальные медицинские заключения или влияет на диагностику и лечение, требуется отдельная квалификация на предмет программного медицинского изделия. Перед запуском нужен профильный правовой анализ.</div>
+</section>
+
+<section class="block" id="market">
+  <h2>Стратегия и коммерческая архитектура</h2>
+  <p>Omada, Lark, Noom и WeightWatchers уже объединяют коучинг, цифровые программы, данные и клинические услуги. Поэтому простое перечисление функций не создаёт отличия.</p>
+  <div class="decision"><strong>Защищаемая позиция проекта:</strong> российская карта доступных замен + бережный сценарий возвращения после срыва + доказательный шлюз для новых функций + безопасная маршрутизация между самопомощью и медициной + постепенное снижение зависимости человека от сервиса.</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Уровень</th><th>Ценность</th><th>Состав</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Basic</strong></td><td>Начать заботиться о себе без перегрузки</td><td>Тарелка, замены, одно действие, восстановление, недельный обзор.</td></tr>
+        <tr><td><strong>Connected</strong></td><td>Видеть объективную динамику</td><td>Смартфон и собственные совместимые устройства; без обязательного комплекта.</td></tr>
+        <tr><td><strong>Care</strong></td><td>Получить человеческую поддержку</td><td>Координатор, небольшая группа, расширенный обзор и навигация.</td></tr>
+        <tr><td><strong>Medical</strong></td><td>Решать клиническую задачу</td><td>Услуги лицензированного медицинского партнёра по показаниям.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Первый пилот разумно проводить в D2C‑контуре для быстрой проверки поведения, затем масштабировать через партнёров, работодателей и страховщиков. Обязательный набор датчиков на массовом старте повышает цену и сложность поддержки, поэтому базовая модель — BYOD.</p>
+</section>
+
+<section class="block" id="mvp">
+  <h2>MVP: минимальный законченный контур</h2>
+  <div class="two">
+    <div class="panel include">
+      <h3>Включить</h3>
+      <ul>
+        <li>короткий онбординг и карту реального контекста;</li>
+        <li>локализованную модель тарелки и доступные замены;</li>
+        <li>выбор одного из трёх следующих действий;</li>
+        <li>накопительный прогресс без обнуления;</li>
+        <li>сценарий возвращения после пропуска;</li>
+        <li>недельный обзор поведения и самочувствия;</li>
+        <li>шаги со смартфона и простой BYOD‑контур;</li>
+        <li>маршрутизацию к человеку и паспорт доказательности рекомендаций.</li>
+      </ul>
+    </div>
+    <div class="panel exclude">
+      <h3>Не включать</h3>
+      <ul>
+        <li>CGM для здоровой массовой аудитории;</li>
+        <li>IgG‑тесты, генетические и микробиомные обещания;</li>
+        <li>обязательный комплект устройств;</li>
+        <li>диагностику и назначения от ИИ;</li>
+        <li>полноценный открытый социальный поток;</li>
+        <li>единый «балл здоровья»;</li>
+        <li>калорийную слежку как основной интерфейс;</li>
+        <li>наказания, стыд и сброс серии.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="pilot">
+  <h2>Пилот и критерии решения</h2>
+  <p>Пилот должен отвечать не на вопрос «нравится ли приложение», а на вопрос «помогает ли система начать, повторять и возвращаться».</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Группа метрик</th><th>Что измерять</th><th>Зачем</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Активация</strong></td><td>Завершение онбординга; первое действие за 24–48 часов.</td><td>Проверить понятность входа и минимальную ценность.</td></tr>
+        <tr><td><strong>Поведение</strong></td><td>Доля выполненных действий; частота повторения; изменение структуры рациона.</td><td>Увидеть реальное изменение, а не только посещаемость.</td></tr>
+        <tr><td><strong>Возврат</strong></td><td>Доля пользователей, вернувшихся после 3–7 дней паузы.</td><td>Проверить ключевое отличие — восстановление без стыда.</td></tr>
+        <tr><td><strong>Удержание</strong></td><td>Активность на 4‑й, 8‑й и 12‑й неделях.</td><td>Оценить устойчивость, а не краткую новизну.</td></tr>
+        <tr><td><strong>Самоэффективность</strong></td><td>Ощущение лёгкости, контроля и способности продолжать самостоятельно.</td><td>Понять, снижает ли сервис зависимость от внешнего контроля.</td></tr>
+        <tr><td><strong>Безопасность</strong></td><td>Частота и корректность эскалаций, пропущенные риски, жалобы.</td><td>Проверить маршрутизацию до масштабирования.</td></tr>
+        <tr><td><strong>Экономика</strong></td><td>Стоимость поддержки, минуты человека на пользователя, конверсия по уровням.</td><td>Проверить жизнеспособность сервисной модели.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note"><strong>Решающая метрика:</strong> возврат после паузы. Она лучше отражает устойчивую заботу о себе, чем идеальная серия дней без пропусков.</div>
+</section>
+
+<section class="block" id="governance">
+  <h2>Шлюз доказательности</h2>
+  <p>Каждая рекомендация, датчик и новый модуль должны проходить единый паспорт до попадания в продукт.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Поле паспорта</th><th>Обязательный вопрос</th></tr></thead>
+      <tbody>
+        <tr><td>Утверждение</td><td>Что именно функция обещает изменить?</td></tr>
+        <tr><td>Аудитория</td><td>Для кого получены данные и кому они неприменимы?</td></tr>
+        <tr><td>Уровень доказательств</td><td>Руководство, систематический обзор, РКИ, наблюдение или экспертное мнение?</td></tr>
+        <tr><td>Величина эффекта</td><td>Насколько изменение практически значимо?</td></tr>
+        <tr><td>Ограничения и риск</td><td>Что может быть измерено неверно и какой вред возможен?</td></tr>
+        <tr><td>Правовой статус</td><td>Wellness, медицинская услуга или функция медицинского изделия?</td></tr>
+        <tr><td>Дата пересмотра</td><td>Когда и по какому сигналу утверждение проверяется снова?</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="block" id="sources">
+  <h2>Основание исследования</h2>
+  <ul class="sources">
+    <li><span class="source-tag">Питание</span> <a href="https://www.who.int/en/news-room/fact-sheets/detail/healthy-diet" target="_blank" rel="noreferrer">WHO: Healthy diet</a> и <a href="https://nutritionsource.hsph.harvard.edu/healthy-eating-plate/" target="_blank" rel="noreferrer">Harvard Healthy Eating Plate</a>.</li>
+    <li><span class="source-tag">Привычки</span> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11641623/" target="_blank" rel="noreferrer">систематический обзор формирования привычек</a> и <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10498822/" target="_blank" rel="noreferrer">обзор техник изменения поведения</a>.</li>
+    <li><span class="source-tag">Мотивация</span> <a href="https://pubmed.ncbi.nlm.nih.gov/32437175/" target="_blank" rel="noreferrer">метаанализ Self‑Determination Theory</a> и <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11886969/" target="_blank" rel="noreferrer">обзор peer support</a>.</li>
+    <li><span class="source-tag">Устройства</span> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11560992/" target="_blank" rel="noreferrer">umbrella review носимых устройств</a>; рекомендации <a href="https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings/monitoring-your-blood-pressure-at-home" target="_blank" rel="noreferrer">AHA по домашнему измерению давления</a> и позиция по <a href="https://newsroom.heart.org/news/cuffless-blood-pressure-technologies-in-wearable-devices-show-promise-to-transform-care" target="_blank" rel="noreferrer">безманжетным технологиям</a>.</li>
+    <li><span class="source-tag">Персонализация</span> <a href="https://pubmed.ncbi.nlm.nih.gov/27524815/" target="_blank" rel="noreferrer">Food4Me</a>; обзор отсутствия доказанной пользы <a href="https://www.gu.se/en/news/no-evidence-that-continuous-glucose-monitors-improve-health-in-people-without-diabetes" target="_blank" rel="noreferrer">CGM у людей без диабета</a>; позиция AAAAI по <a href="https://www.aaaai.org/tools-for-the-public/conditions-library/allergies/igg-food-test" target="_blank" rel="noreferrer">IgG‑тестам</a>.</li>
+    <li><span class="source-tag">Рынок</span> Официальные материалы <a href="https://www.omadahealth.com/" target="_blank" rel="noreferrer">Omada Health</a>, <a href="https://www.lark.com/" target="_blank" rel="noreferrer">Lark</a>, <a href="https://www.noom.com/med/" target="_blank" rel="noreferrer">Noom Med</a> и <a href="https://www.weightwatchers.com/us/blog/connect" target="_blank" rel="noreferrer">WeightWatchers Connect</a>.</li>
+    <li><span class="source-tag">Право РФ</span> <a href="https://www.consultant.ru/document/cons_doc_LAW_121895/ccf02734a76e335943ae86f86b319d6035cca374/" target="_blank" rel="noreferrer">323‑ФЗ, статья 36.2</a>; <a href="https://rg.ru/documents/2025/05/16/minzdrav-prikaz193-site-dok.html" target="_blank" rel="noreferrer">приказ Минздрава № 193н</a>; <a href="https://www.consultant.ru/document/cons_doc_LAW_61801/26edb2934b899bf9c74c3a8f7e574651c6565e6d/" target="_blank" rel="noreferrer">152‑ФЗ, статья 10</a>; <a href="https://roszdravnadzor.gov.ru/medproducts/changesregdoc/news/46398" target="_blank" rel="noreferrer">правила регистрации медицинских изделий</a>.</li>
+  </ul>
+  <div class="risk"><strong>Ограничение:</strong> материал задаёт концептуальную рамку и направления проверки. Он не заменяет клинические рекомендации, юридическое заключение, исследование рынка России и расчёт unit‑экономики конкретной модели.</div>
+</section>
+
+<section class="block" id="final">
+  <h2>Формула проекта</h2>
+  <div class="formula" aria-label="Формула пользовательского пути">
+    <span>понять</span><i>→</i><span>выбрать</span><i>→</i><span>повторить</span><i>→</i><span>заметить</span><i>→</i><span>вернуться</span><i>→</i><span>уточнить</span><i>→</i><span>получить помощь при необходимости</span><i>→</i><span>стать самостоятельнее</span>
+  </div>
+  <div class="decision"><strong>Итоговая концепция:</strong> не контролировать здоровье человека вместо него, а создавать среду, в которой забота о себе становится понятной, посильной, доказательной и постепенно присваивается самим человеком.</div>
+  <p>Следующий проектный шаг — описать три сквозных пользовательских сценария, собрать прототип движка следующего действия и провести 12‑недельный пилот с заранее установленными критериями продолжения, изменения или остановки.</p>
+</section>
+
+<footer>Research Library · Концептуальная архитектура · версия 1.0 · 29 августа 2026 года</footer>
+</main>
+
+<div class="float">
+  <button type="button" class="print-btn" id="printBtn">Печать / PDF</button>
+  <div class="menu-wrap">
+    <div class="menu" id="menu" aria-label="Содержание страницы">
+      <a href="#decision">Ключевой вывод</a>
+      <a href="#vector">Формирование вектора</a>
+      <a href="#architecture">Архитектура</a>
+      <a href="#evidence">Доказательная база</a>
+      <a href="#care">Лестница помощи</a>
+      <a href="#legal">Правовая модель</a>
+      <a href="#market">Стратегия и экономика</a>
+      <a href="#mvp">MVP</a>
+      <a href="#pilot">Пилот и метрики</a>
+      <a href="#governance">Шлюз доказательности</a>
+      <a href="#sources">Источники</a>
+      <a href="#final">Формула проекта</a>
+      <a href="../../">← В библиотеку</a>
+    </div>
+    <button type="button" id="tocBtn" aria-expanded="false" aria-controls="menu">☰ Содержание</button>
+  </div>
+</div>
+
+<script>
+const tocButton=document.getElementById("tocBtn");
+const menu=document.getElementById("menu");
+const printButton=document.getElementById("printBtn");
+function closeMenu(){menu.classList.remove("open");tocButton.setAttribute("aria-expanded","false")}
+tocButton.addEventListener("click",function(){const isOpen=menu.classList.toggle("open");tocButton.setAttribute("aria-expanded",String(isOpen))});
+menu.querySelectorAll("a").forEach(function(link){link.addEventListener("click",closeMenu)});
+document.addEventListener("click",function(event){if(!event.target.closest(".menu-wrap"))closeMenu()});
+document.addEventListener("keydown",function(event){if(event.key==="Escape"){closeMenu();tocButton.focus()}});
+printButton.addEventListener("click",function(){window.print()});
+</script>
+</body>
+</html>
