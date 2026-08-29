@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
+  <meta name="robots" content="noindex,nofollow,noarchive">
   <meta name="description" content="Исследование и подбор гидробурового комплекта для мини-экскаватора LiuGong 9027F ZTS. Визуальный прототип HTML-стандарта исследований.">
   <title>Гидробур для LiuGong 9027F ZTS — исследование и закупочное решение</title>
   <style>
