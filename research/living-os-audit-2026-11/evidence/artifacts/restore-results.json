@@ -1,0 +1,24 @@
+{
+  "method": "Application stopped before pg_dump and file copy; restored to separate DB and folder; started identical JAR with external config",
+  "sourceDatabase": "orders_audit_20261106",
+  "restoredDatabase": "orders_restore_20261106",
+  "countColumns": [
+    "projects",
+    "orders",
+    "executors",
+    "attachments",
+    "execution_reports"
+  ],
+  "sourceCounts": "6,5070,59,8,4",
+  "restoredCounts": "6,5070,59,8,4",
+  "backupFileCount": 2,
+  "restoredFileCount": 2,
+  "allCopiedFileHashesMatch": true,
+  "sampleDownloadStatus": 200,
+  "sampleSha256Matches": true,
+  "limitations": [
+    "Manual local recovery, not a configured automatic backup service",
+    "No off-site copy, retention or RPO/RTO agreement verified",
+    "Seed attachment metadata includes placeholders without original file bytes; sample is a newly uploaded synthetic fixture"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "sql_error": {
+    "status": 409,
+    "containsBcryptHash": true,
+    "containsDatabaseDetail": true
+  }
+}

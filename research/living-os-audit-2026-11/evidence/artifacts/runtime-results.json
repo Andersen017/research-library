@@ -1,0 +1,101 @@
+{
+  "base": "http://127.0.0.1:18081",
+  "tests": [
+    {
+      "test": "anonymous_orders",
+      "status": 302,
+      "location": "http://127.0.0.1:18081/login.html"
+    },
+    {
+      "test": "user_role_promotion_block",
+      "status": 500
+    },
+    {
+      "test": "missing_csrf",
+      "status": 403
+    },
+    {
+      "test": "user_edits_other_assignee_order",
+      "status": 200
+    },
+    {
+      "test": "stale_update",
+      "status": 200,
+      "firstStatus": 200,
+      "firstChangeRetained": false,
+      "secondChangeRetained": true
+    },
+    {
+      "test": "duplicate_order_number",
+      "status": 409,
+      "detail": "Номер поручения уже существует в данном проекте"
+    },
+    {
+      "test": "missing_assignee",
+      "status": 400,
+      "detail": "Ошибки валидации полей"
+    },
+    {
+      "test": "completed_without_actual_date",
+      "status": 400,
+      "detail": "Для статуса «Завершено» обязательна дата фактического выполнения"
+    },
+    {
+      "test": "due_before_created",
+      "status": 201,
+      "detail": "accepted"
+    },
+    {
+      "test": "user_download_other_attachment",
+      "status": 200,
+      "sha256": "28e428d02d6ac739012bd365a2dcac8665650a24e4d58d59b73ee03fd25f7d63"
+    },
+    {
+      "test": "intra_storage_overwrite",
+      "status": 201,
+      "originalChanged": true,
+      "readStatus": 200
+    },
+    {
+      "test": "user_deletes_other_attachment",
+      "status": 204,
+      "fileExistedBefore": true,
+      "fileExistsAfter": false,
+      "metadataAfter": 404
+    },
+    {
+      "test": "user_changes_admin_login",
+      "status": 200
+    },
+    {
+      "test": "user_deactivates_admin",
+      "status": 204
+    },
+    {
+      "test": "deactivated_admin_retains_privilege",
+      "status": 200
+    },
+    {
+      "test": "deactivated_admin_new_login",
+      "status": 302,
+      "location": "http://127.0.0.1:18081/login.html?error"
+    },
+    {
+      "test": "demoted_admin_retains_privilege",
+      "status": 200
+    }
+  ],
+  "fixtures": {
+    "projectId": 6,
+    "orderId": 19,
+    "orderFileId": 3,
+    "cleanAttachmentId": 9,
+    "cleanStoragePath": "2026/11/9ca4c21b-b174-4397-9c2a-49cd2a926532_living-os-preservation.txt",
+    "cleanSha256": "28e428d02d6ac739012bd365a2dcac8665650a24e4d58d59b73ee03fd25f7d63",
+    "userIds": {
+      "A": 7,
+      "B": 8,
+      "C": 9
+    }
+  }
+}

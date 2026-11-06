@@ -1,0 +1,78 @@
+{
+  "datasetCounts_orders_projects_executors": "5020,6,59",
+  "applicationHeapMaxMB": 512,
+  "dbPoolMax": 10,
+  "transport": "localhost HTTP; Python urllib client; no think time; distinct 50 accounts; one machine; excludes browser rendering, SMTP, internet, long-duration soak",
+  "runs": [
+    {
+      "concurrentAccounts": 5,
+      "requests": 100,
+      "elapsedSec": 1.33,
+      "rps": 75.35,
+      "errors": 0,
+      "p50Ms": 12.35,
+      "p95Ms": 253.41,
+      "maxMs": 397.12,
+      "perEndpoint": [
+        {
+          "endpoint": "/api/orders?page=0&size=20",
+          "p95Ms": 39.36
+        },
+        {
+          "endpoint": "/api/dashboard/projects?page=0&size=20",
+          "p95Ms": 388.07
+        },
+        {
+          "endpoint": "/api/statistics/summary",
+          "p95Ms": 16.27
+        },
+        {
+          "endpoint": "/api/projects",
+          "p95Ms": 23.8
+        },
+        {
+          "endpoint": "/api/orders/19",
+          "p95Ms": 17.44
+        }
+      ]
+    },
+    {
+      "concurrentAccounts": 50,
+      "requests": 1000,
+      "elapsedSec": 6.12,
+      "rps": 163.38,
+      "errors": 0,
+      "p50Ms": 197.09,
+      "p95Ms": 914.09,
+      "maxMs": 1907.63,
+      "perEndpoint": [
+        {
+          "endpoint": "/api/orders?page=0&size=20",
+          "p95Ms": 667.02
+        },
+        {
+          "endpoint": "/api/dashboard/projects?page=0&size=20",
+          "p95Ms": 1289.25
+        },
+        {
+          "endpoint": "/api/statistics/summary",
+          "p95Ms": 49.66
+        },
+        {
+          "endpoint": "/api/projects",
+          "p95Ms": 644.25
+        },
+        {
+          "endpoint": "/api/orders/19",
+          "p95Ms": 611.26
+        }
+      ]
+    }
+  ],
+  "concurrentCreates": {
+    "count": 50,
+    "errors": 0,
+    "p95Ms": 131.98,
+    "storedCount": "50"
+  }
+}

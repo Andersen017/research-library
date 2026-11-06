@@ -1,0 +1,14 @@
+[
+  {
+    "listening": true,
+    "port": 18080
+  },
+  {
+    "listening": false,
+    "port": 18081
+  },
+  {
+    "listening": false,
+    "port": 18082
+  }
+]
