@@ -171,6 +171,8 @@
       .footer { border-radius: 0; }
     }
   </style>
+<link rel="stylesheet" href="../../assets/research-contents.css?v=1">
+<script defer src="../../assets/research-contents.js?v=1" data-contents-source="#toc"></script>
 </head>
 <body>
   <a href="../../" aria-label="Вернуться в библиотеку исследований" style="position:fixed;left:14px;bottom:14px;z-index:9998;text-decoration:none;background:#3f4a36;color:#f7f4e9;border:1px solid rgba(255,255,255,.18);padding:9px 12px;border-radius:999px;font:600 13px/1.2 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;box-shadow:0 8px 24px rgba(31,36,27,.16)">← Библиотека</a>
